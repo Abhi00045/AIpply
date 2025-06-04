@@ -1,9 +1,10 @@
+import Home from "./Pages/Home"
 
 export  const App = ()=>{
 
   return(
     <>
-    <h1>HII</h1>
+    <Home/>
     </>
   )
 }

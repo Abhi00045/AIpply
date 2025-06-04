@@ -1,0 +1,47 @@
+.main-bar{
+    padding: 10px 70px 10px 70px;
+    margin: 20px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid red;
+    .logo{
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        .list-navbar{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+        }
+    }
+    
+}
+.button-navbar{
+    display: flex;
+    flex-direction: row;
+   gap: 80px;
+    align-items: center;
+    justify-content: space-around;
+}
+.button-one{
+    margin-right: 15px;
+    padding: 20px;
+    border-radius: 25px;
+    border: none;
+    background-color: #234f92;
+    color: white;
+}
+.button-two{
+    margin-right: 15px;
+    padding: 20px;
+    border-radius: 25px;
+    
+    border:2px solid #234f92;
+    background: black;
+    color: white;
+}
+
