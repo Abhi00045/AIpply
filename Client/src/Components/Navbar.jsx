@@ -7,9 +7,9 @@ const Navbar = ()=>{
         <div className="main-bar">
             <div className="logo"><h1>AIpply</h1>
             <div className="list-navbar">
-                <p>Blog</p>
-                <p>How it works</p>
-                <p>Contact</p>
+                <a href="#"><p>Blog</p></a>
+                <a href="#Howitworks"><p>How it works</p></a>
+                <a href="#contacts"><p>Contact</p></a>
             </div>
             </div>
             

@@ -1,12 +1,18 @@
+
+
 .main-bar{
-    padding: 10px 70px 10px 70px;
-    margin: 20px;
-    border-radius: 25px;
+    padding:15px;
+    color: white;
+    margin: 0;
+    background-color: #171717;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid red;
+   border-bottom: 2px solid black;
+   position: sticky;
+    top: 0;
+    z-index: -10px;
     .logo{
         display: flex;
         flex-direction: row;
@@ -16,6 +22,19 @@
             flex-direction: row;
             align-items: center;
             gap: 15px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        p{
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        p:hover{
+            
+            color: #234f92;
+            cursor: pointer;
         }
     }
     
@@ -29,19 +48,22 @@
 }
 .button-one{
     margin-right: 15px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 25px;
-    border: none;
+    border: 2px solid #171717;
     background-color: #234f92;
     color: white;
+    cursor: pointer;
 }
 .button-two{
     margin-right: 15px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 25px;
-    
+    cursor: pointer;
     border:2px solid #234f92;
     background: black;
     color: white;
+}.button-two:hover{
+    color: #234f92;
 }
 

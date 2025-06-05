@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+#Howitworks{
+    padding: 20px;
+}
+.how-it-works {
+    background-color: #212020; /* Black background */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius:40px;
+  }
+  
+  .how-it-works h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .how-it-works .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #ccc;
+  }
+  
+  .steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* position: relative; */
+    gap: 40px;
+  }
+  
+  .step {
+    /* position: relative; */
+    max-width: 250px;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .icon-circle {
+    background: white;
+    color: #000;
+    font-size: 2rem;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .step p {
+    font-size: 0.95rem;
+    color: #bbb;
+  }
+  
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+  /* ----------------------------------------------------------------------------- */
+ /* Hero-section */
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 80px 60px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: transparent;
+  gap: 60px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  /* flex: 1; */
+  color: rgb(0, 0, 0);
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #191919;
+  max-width: 600px;
+  margin-bottom: 10px;
+}
+
+.hero-image {
+    position: absolute;
+    right: 6%;
+    bottom: -90px; 
+    z-index: 1;
+    width: 35%;
+  }
+  
+  .hero-image img {
+    width: 70%;
+    height: 100%;
+    object-fit: contain;
+  
+    /* 👇 Add this line to push the image down a bit */
+    margin-top: 40px;  /* or adjust px to suit your exact visual need */
+  }
+button{
+    margin-right: 15px;
+    padding: 15px;
+    border-radius: 25px;
+    border: 2px solid #171717;
+    background-color: #234f92;
+    color: white;
+    cursor: pointer;
+}
