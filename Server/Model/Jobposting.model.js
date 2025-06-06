@@ -16,6 +16,10 @@ const JobpostingSchema = new mongoose.Schema(
         Location:{
             type:String,
             require:true
+        },
+        skills:{
+            type:[],
+            require:true
         }
 
     }
