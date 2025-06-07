@@ -1,12 +1,10 @@
-import { Applicant } from "./Pages/Applicant/JobApplicant"
-import Home from "./Pages/Mainpage"
+import Mainpage from "./Pages/Mainpage"
 
 export  const App = ()=>{
 
   return(
     <>
-    {/* <Home/> */}
-    <Applicant/>
+    <Mainpage/>
     </>
   )
 }

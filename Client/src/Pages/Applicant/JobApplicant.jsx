@@ -1,6 +1,6 @@
 import { MdEmail } from "react-icons/md";
 
-export const Applicant = ()=>{
+export const JobApplicant = ()=>{
 
     return(
         <>
