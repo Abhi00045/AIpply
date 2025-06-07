@@ -21,6 +21,7 @@ const JobpostingSchema = new mongoose.Schema(
             type:[],
             require:true
         }
+        // hii
 
     }
 )
