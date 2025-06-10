@@ -1,6 +1,7 @@
 import { MdEmail } from "react-icons/md";
+import "../Components/Applicant.css"
 
-export const JobApplicant = ()=>{
+export const Applicant = ()=>{
 
     return(
         <>
@@ -35,17 +36,8 @@ export const JobApplicant = ()=>{
                 <div className="menu-list">info@gmail.com</div>
                 </div>
                 <hr />
-                <div className="main-box-applicant">
-                    <div className="main-box-applicant-left">
-                        <div className="top-main-box">
 
-                        </div>
-                        <div className="bottom-main-box">
-                            
-                        </div>
-                    </div>
-                    <div className="main-box-applicant-right"></div>
-                </div>
+                
             </div>
         </div>
         </>
