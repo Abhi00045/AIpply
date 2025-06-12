@@ -15,7 +15,7 @@
 }
 .main-menu-bar{
     padding: 10px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 15%;
     /* position: fixed; */
     .menu-bar{
@@ -27,12 +27,13 @@
         .menu-lists{
             ul li{
                 list-style: none;
-                border: 2px solid red;
+                /* border: 2px solid red; */
                 width: 15vw;
                 padding: 15px;
             }
+            
             ul li:hover{
-                background-color: blue;
+                background-color: #234f92;
             }
             ul{
                 display: flex;
@@ -44,6 +45,22 @@
     }
 }
 button{
-    width: 10vw;
+    width: 13vw;
+    border-radius: 40px;
+}
+.logout{
+     margin-right: 15px;
+    padding: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    border:2px solid #234f92;
+    background: black;
+    color: white;
+}
+.logout:hover{
+    color: rgb(229, 73, 73);
+}
+.links{
+    text-decoration: none;
 }
 

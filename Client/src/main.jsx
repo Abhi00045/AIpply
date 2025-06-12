@@ -4,7 +4,11 @@ import './index.css'
 import { App } from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Mainpage from './Pages/Mainpage'
-import { JobApplicant } from './Pages/Applicant/JobApplicant'
+import { Profile } from './Pages/Applicant/Profile'
+import { FindJobs } from './Pages/Applicant/FindJobs'
+
+import { Applications } from './Pages/Applicant/Applications'
+import { JobApplicant } from './Components/Applicant.main.jsx'
 
 const router = createBrowserRouter([
   // {
@@ -17,20 +21,32 @@ const router = createBrowserRouter([
       {
         element:<JobApplicant/>,
         path:'/applicant',
-        // children:[
-        //   {
-        //     element:<
-        //   }
-        // ]
+        children:[
+          {
+
+            element:<JobApplicant/>,
+            path:'/applicant/dashboard'
+          },
+          {
+            element:<Profile/>,
+            path:"/applicant/profile"
+          },
+          {
+            element:<FindJobs/>,
+            path:"/applicant/findjobs"
+          },
+          {
+            element:<Applications/>,
+            path:"/applicant/applications"
+          }
+        ]
       }
-  //   ]
-  // }
 
 ])
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </StrictMode>,
 )

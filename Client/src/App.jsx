@@ -1,5 +1,4 @@
-import { Applicant } from "./Components/Applicant.main"
-import { JobApplicant } from "./Pages/Applicant/JobApplicant"
+import { JobApplicant } from "./Components/Applicant.main"
 import { Profile } from "./Pages/Applicant/Profile"
 import Mainpage from "./Pages/Mainpage"
 
@@ -9,7 +8,7 @@ export  const App = ()=>{
     <>
     {/* <Mainpage/> */}
     {/* <Profile/> */}
-    <Applicant/>
+    <JobApplicant/>
     </>
   )
 }

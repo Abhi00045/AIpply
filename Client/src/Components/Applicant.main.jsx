@@ -1,29 +1,29 @@
-import { MdEmail } from "react-icons/md";
+// import { MdEmail } from "react-icons/md";
 import "../Components/Applicant.css"
 import { Profile } from "../Pages/Applicant/Profile";
+import { Link } from "react-router";
 
-export const Applicant = ()=>{
+export const JobApplicant = ()=>{
 
     return(
         <>
         <div className="main">
             <div className="main-menu-bar">
                 <div className="menu-bar">
-                <h1>AIpply</h1>
-                    <div className="logo-with-mainpage">
-                        
+                <Link className="links" to='/'><h1>AIpply</h1></Link>
+                    <div className="logo-with-mainpage">   
                     <button>Find Jobs</button>
                     </div>
                     <div className="menu-lists">
                     <ul>
-                        <li>Home</li>
-                        <li>Applications</li>
-                        <li>Profile</li>
-                        <li>Notifications</li>
+                    <Link className="links" to='/applicant/dashboard'><li>Home</li></Link>
+                        <Link className="links"  to="/applicant/applications"><li>Applications</li></Link>
+                        <Link className="links"  to='/applicant/profile'><li>Profile</li></Link>
+                        <Link className="links"  to='/applicant/profile'><li>Notifications</li></Link>
                     </ul>
                     </div>
                 <div className="logout-button">
-                <button>Log out</button>
+                <button className="logout">Log out</button>
                 </div>
                 </div>
             </div>
