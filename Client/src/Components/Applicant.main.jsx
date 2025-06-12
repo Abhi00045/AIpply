@@ -8,8 +8,9 @@ export const Applicant = ()=>{
         <div className="main">
             <div className="main-menu-bar">
                 <div className="menu-bar">
+                <h1>AIpply</h1>
                     <div className="logo-with-mainpage">
-                        <h1>AIpply</h1>
+                        
                     <button>Find Jobs</button>
                     </div>
                     <div className="menu-lists">
