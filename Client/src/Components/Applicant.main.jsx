@@ -1,5 +1,6 @@
 import { MdEmail } from "react-icons/md";
 import "../Components/Applicant.css"
+import { Profile } from "../Pages/Applicant/Profile";
 
 export const Applicant = ()=>{
 
@@ -26,20 +27,7 @@ export const Applicant = ()=>{
                 </div>
                 </div>
             </div>
-            <div className="main-applicant-page">
-                <div className="main-page-navigation-bar">
-                <div className="menu-list">
-                    <h3>Profile</h3>
-                </div>
-                <div className="menu-list">
-                <MdEmail />
-                </div>
-                <div className="menu-list">info@gmail.com</div>
-                </div>
-                <hr />
-
-                
-            </div>
+            <Profile/>
         </div>
         </>
     )
