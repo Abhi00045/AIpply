@@ -11,8 +11,3 @@ app.listen(3011 , (req , res)=>{
     Connection();
     console.log("server Started");
 })
-
-
-app.get("/",(req , res)=>{
-    res.send("hii")
-})

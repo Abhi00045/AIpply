@@ -20,6 +20,7 @@ const JobpostingSchema = new mongoose.Schema(
         skills:{
             type:[],
             require:true
-        }
+        },
+        createdAt :{type:Date , default:Date.now}
     }
 )
