@@ -9,6 +9,9 @@ import { FindJobs } from './Pages/Applicant/FindJobs'
 
 import { Applications } from './Pages/Applicant/Applications'
 import { JobApplicant } from './Components/Applicant.main.jsx'
+import { Signup } from './Pages/Authentication/Signup.jsx'
+import { Login } from './Pages/Authentication/Login.jsx'
+import { Recuriter } from './Pages/Recuriter/Recuriter.jsx'
 
 const router = createBrowserRouter([
   // {
@@ -40,6 +43,18 @@ const router = createBrowserRouter([
             path:"/applicant/applications"
           }
         ]
+      },
+      {
+        element:<Signup/>,
+        path:"/signup"
+      },
+      {
+        element:<Login/>,
+        path:"/login"
+      },
+      {
+        element:<Recuriter/>,
+        path:"/recuriter"
       }
 
 ])
