@@ -35,7 +35,7 @@
   
   .logo {
     font-weight: bold;
-    color: #234f92;
+    color: black;
     font-size: 24px;
     margin-bottom: 20px;
   }
@@ -114,6 +114,12 @@
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    
+  }
+  .login-btn:hover{
+    background-color: white;
+    border: 2px solid #234f92;;
+    color: #234f92;
   }
   
   .or {
@@ -142,8 +148,9 @@
   }
   
   .illustration-section {
+
     flex: 1;
-    background-color: #f5f3f1;
+    background-color:black;
     display: flex;
     justify-content: center;
     align-items: center;

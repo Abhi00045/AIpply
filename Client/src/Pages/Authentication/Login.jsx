@@ -1,4 +1,5 @@
 import '../Authentication/Auth.css'
+import loginImage from '../../public/loginimage.png'
 
 export const Login = ()=>{
 
@@ -41,7 +42,7 @@ export const Login = ()=>{
           </form>
         </div>
         <div className="illustration-section">
-          <img src="/illustration.png" alt="Login Illustration" />
+          <img src={loginImage} alt="Login Illustration" />
         </div>
       </div>
     </div>
