@@ -11,7 +11,7 @@ export const Login = ()=>{
           <div className="logo">AIpply</div>
           <h2>Log in</h2>
           <p>
-            or <a href="#">create an account</a> if you don’t have one yet
+            or <a href="/signup">create an account</a> if you don’t have one yet
           </p>
           <form>
             <label>Username or email</label>
