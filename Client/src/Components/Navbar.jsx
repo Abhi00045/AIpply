@@ -14,7 +14,7 @@ const Navbar = ()=>{
             </div>
             
             <div className="buttons-navbar">
-                <button className="button-one">Login</button>
+                <button className="button-one"><a href="/login">Login</a></button>
                     <button className="
                     button-two">For Employers</button>
             </div>

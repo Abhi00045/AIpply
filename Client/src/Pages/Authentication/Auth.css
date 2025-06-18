@@ -270,3 +270,11 @@
   #inp{
     color: #000;
   }
+  .role{
+    width: 500px;
+    padding: 6px;
+    /* color: white;
+    background-color: #00337f; */
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
