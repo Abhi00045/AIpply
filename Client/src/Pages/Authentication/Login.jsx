@@ -15,14 +15,14 @@ export const Login = ()=>{
           </p>
           <form>
             <label>Username or email</label>
-            <input type="email" placeholder="mike142@yourmail.com" />
+            <input id='inp' type="email" placeholder="mike142@yourmail.com" />
             <div className="link-box">
               <a href="#">I can’t remember</a>
             </div>
 
             <label>Password</label>
             <div className="password-wrapper">
-              <input type="password" value="********" />
+              <input id='inp' type="password" value="********" />
               <span className="eye-icon">👁️</span>
             </div>
             <div className="link-box">

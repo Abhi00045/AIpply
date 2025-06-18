@@ -1,8 +1,22 @@
 import '../Authentication/Auth.css'
 import loginImage from '../../public/loginimage.png'
+import { useState } from 'react'
+import axios from 'axios'
 
 
 export const Signup = ()=>{
+
+  const[name , setName] = useState();
+  const[email , setEmail] = useState();
+  const[password , setPassword] = useState();
+
+  const submitingUsers = (e)=>{
+    e.preventDefault();
+    axios.post("",{name , email , password})
+    .then(result => console.log(result)
+    ).catch(err => console.log(err));
+    }
+
 
     return(
         <>
@@ -11,17 +25,34 @@ export const Signup = ()=>{
         <h1 className="title">Sign Up</h1>
         <p className="subtitle">Create your account to access the Job Portal Dashboard</p>
 
-        <form className="signup-form">
+        <form className="signup-form" onSubmit={submitingUsers}>
+          <label htmlFor="">Name</label>
+          <input type="text" 
+          placeholder='Enter your Name' 
+          onChange={(e)=>setName(e.target.value)} 
+          />
           <label>Email</label>
-          <input type="email" placeholder="youremail@example.com" />
+          <input id='inp'
+           type="email" 
+           placeholder="youremail@example.com" 
+           onChange={(e)=>setEmail(e.target.value)}/>
 
           <label>Password</label>
-          <input type="password" placeholder="Enter your password" />
+          <input id='inp'
+           type="password" 
+           placeholder="Enter your password"
+           onChange={(e)=>setPassword(e.target.value)} />
 
           <label>Confirm Password</label>
-          <input type="password" placeholder="Re-enter your password" />
+          <input id='inp' type="password" placeholder="Re-enter your password" />
+          
 
-          <button className="signup-btn">Create Account</button>
+          {/* <select name="Who Are You ?" id="Who Are You ?">
+            <option value="Applicant">Applicant</option>
+            <option value="Recuriter">Recuriter</option>
+          </select> */}
+
+          <button className="signup-btn" >Create Account</button>
 
           <p className="alternate">Already have an account? <a href="/login">Log in</a></p>
         </form>
