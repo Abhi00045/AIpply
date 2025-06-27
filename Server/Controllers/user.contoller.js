@@ -8,6 +8,23 @@ export const userPost = async (req , res)=>{
 
 export const getUser = async (req , res)=>{
 
-    const newUsergetting = await User.find();
-    res.json(newUsergetting)
+    const {email , password} = req.query;
+
+    try{
+        const user = await User.findOne({email});
+
+        if(!user){
+            return res.json("email not found")
+        }
+
+        if(user.password !== password){
+            return  res.json("Incorrect password")
+        }
+
+        res.json("Login successfully")
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+      }
+
 }

@@ -68,7 +68,7 @@ export const Signup = () => {
               <option id="inp" value="jobseeker">
                 I am a jobseeker
               </option>
-              <option id="inp" value="recuriter">
+              <option id="inp" value="recruiter">
                 I am a recruiter
               </option>
             </select>

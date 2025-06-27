@@ -1,7 +1,32 @@
 import '../Authentication/Auth.css'
 import loginImage from '../../public/loginimage.png'
+import { useState } from 'react'
 
 export const Login = ()=>{
+
+  const [email , setEmail] = useState("");
+  const [password , setPassword] = useState("")
+  const [msg , setMsg] = useState("")
+
+const handleLogin = async(e)=>{
+  e.preventdefault();
+
+  try {
+    const res = await fetch(`http://localhost:5000/api/login?email=${email}&password=${password}`);
+    const data = await res.json();
+
+    if (res.ok) {
+      setMsg('✅ Login successful!');
+    } else {
+      setMsg(`❌ ${data.message}`);
+    }
+  } catch (error) {
+    setMsg('❌ Something went wrong.');
+    console.error(error);
+  }
+
+
+}
 
     return(
         <>
@@ -13,16 +38,16 @@ export const Login = ()=>{
           <p>
             or <a href="/signup">create an account</a> if you don’t have one yet
           </p>
-          <form>
-            <label>Username or email</label>
-            <input id='inp' type="email" placeholder="mike142@yourmail.com" />
+          <form onSubmit={handleLogin}>
+            <label>Email</label>
+            <input id='inp' type="email" placeholder="mike142@yourmail.com" onChange={(e)=>setEmail(e.target.value)} />
             <div className="link-box">
               <a href="#">I can’t remember</a>
             </div>
 
             <label>Password</label>
             <div className="password-wrapper">
-              <input id='inp' type="password" value="********" />
+              <input id='inp' type="password" value="********" onChange={(e)=>setPassword(e.target.value)} />
               <span className="eye-icon">👁️</span>
             </div>
             <div className="link-box">
@@ -33,7 +58,8 @@ export const Login = ()=>{
               <input type="checkbox" /> Remember me
             </div>
 
-            <button className="login-btn">Log me in</button>
+            <button className="login-btn" type='submit'>Log me in</button>
+            <p style={{ color: 'red' }}>{msg}</p>
 
             {/* <div className="or">or</div> */}
 
