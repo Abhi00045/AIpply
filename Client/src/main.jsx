@@ -16,7 +16,7 @@ import { Recuriter } from './Pages/Recuriter/Recuriter.jsx'
 const router = createBrowserRouter([
   // {
   //   element:<Mainpage/>,
-  //   children=[
+  //   children=[ok ok ok
       {
         element:<Mainpage/>,
         path:"/"
