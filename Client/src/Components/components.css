@@ -18,6 +18,7 @@
         flex-direction: row;
         gap: 50px;
         .list-navbar{
+            color: white;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -28,6 +29,7 @@
             color: white;
         }
         p{
+            color: rgb(121, 120, 120);
             font-size: 15px;
             text-transform: uppercase;
         }
@@ -54,6 +56,10 @@
     background-color: #234f92;
     color: white;
     cursor: pointer;
+}
+.button-one a{
+    list-style: none;
+    text-decoration: none;
 }
 .button-two{
     margin-right: 15px;

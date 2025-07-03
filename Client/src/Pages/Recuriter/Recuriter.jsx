@@ -1,10 +1,12 @@
-
+import "../Recuriter/recuriter.css"
 
 export const Recuriter = ()=>{
 
     return(
         <>
-        <h1>Recuriter</h1>
+        <div className="recuriter-form">
+            
+        </div>
         </>
     )
 }

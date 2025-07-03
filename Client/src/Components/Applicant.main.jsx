@@ -1,5 +1,6 @@
 // import { MdEmail } from "react-icons/md";
-import "../Components/Applicant.css"
+// import '../Applicant/Apply.css'
+import './Applicant.css'
 import { Profile } from "../Pages/Applicant/Profile";
 import { Link } from "react-router";
 
@@ -18,7 +19,7 @@ export const JobApplicant = ()=>{
                     <ul>
                     <Link className="links" to='/applicant/dashboard'><li>Home</li></Link>
                         <Link className="links"  to="/applicant/applications"><li>Applications</li></Link>
-                        <Link className="links"  to='/applicant/profile'><li>Profile</li></Link>
+                        <Link className="links"  to='/applicant/profile'><li><Profile/></li></Link>
                         <Link className="links"  to='/applicant/profile'><li>Notifications</li></Link>
                     </ul>
                     </div>

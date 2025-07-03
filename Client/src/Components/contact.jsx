@@ -17,9 +17,12 @@ const Contact = () => {
 
         <div className="social-icons">
             <h2>Follow us</h2>
+            <br />
+          <div className="social-icons-2">
           <a href="#" aria-label="Facebook"><FaGithubSquare/></a>
           <a href="#" aria-label="Twitter"><CiLinkedin/></a>
           <a href="#" aria-label="LinkedIn"><BsTwitterX/></a>
+          </div>
         </div>
 
         <div className="useful">
@@ -36,37 +39,44 @@ const Contact = () => {
 
       <style>{`
         .contact-section {
+        color:white;
         display:flex;
         flex-direction:row;
         justify-content:space-around;
           position: relative;
           padding: 60px;
-          background-color: #f5f5f5;
+          background-color:rgb(68, 68, 69);
           
         }
 
         .contact-info {
+        color:white;
           z-index: 1;
           position: relative;
           max-width: 600px;
         }
 
         .contact-info h2 {
+        color:white;
           font-size: 2rem;
           margin-bottom: 20px;
         }
 
         .contact-info p {
+        color:white;
           font-size: 1.1rem;
           margin: 10px 0;
           display: flex;
           align-items: center;
           gap: 10px;
         }
-
-        .social-icons {
+          .social-icons h2{
+          color:white;
+          }
+        .social-icons-2 {
+        color:white;
         display:flex;
-        flex-direction:column;
+        flex-direction:row;
         justify-content:space-around;
         //   margin-top: 20px;
           display: flex;
@@ -74,23 +84,31 @@ const Contact = () => {
         }
 
         .social-icons a {
+        color:white;
           font-size: 1.5rem;
-          color: #333;
+          color:white;
           transition: color 0.3s;
         }
 
         .social-icons a:hover {
           color: #007bff;
         }
-          .useful{
+        .useful h2{
+        color:white;
+        }  
+        
+        .useful{
+          color:white;
            display:flex;
         flex-direction:column;
         // justify-content:space-around;
           }
         ul{
+        color:white;
         padding:5px;
         }
         ul li{
+        color:white;
         list-style:none;
         margin-bottom:3px;
         }
