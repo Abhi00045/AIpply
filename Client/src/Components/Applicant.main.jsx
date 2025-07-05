@@ -12,15 +12,15 @@ export const JobApplicant = ()=>{
             <div className="main-menu-bar">
                 <div className="menu-bar">
                 <Link className="links" to='/'><h1>AIpply</h1></Link>
-                    <div className="logo-with-mainpage">   
+                    {/* <div className="logo-with-mainpage">   
                     <button>Find Jobs</button>
-                    </div>
+                    </div> */}
                     <div className="menu-lists">
                     <ul>
-                    <Link className="links" to='/applicant/dashboard'><li>Home</li></Link>
-                        <Link className="links"  to="/applicant/applications"><li>Applications</li></Link>
-                        <Link className="links"  to='/applicant/profile'><li><Profile/></li></Link>
-                        <Link className="links"  to='/applicant/profile'><li>Notifications</li></Link>
+                    <Link className="links" to='/applicant/findjobs'><li>Find Jobs</li></Link>
+                        <Link className="links"  to="/applicant/MockInterviews"><li>Mock Interviews</li></Link>
+                        <Link className="links"  to='/applicant/'><li>Profile</li></Link>
+                        <Link className="links"  to='/applicant/Applications'><li>Applications</li></Link>
                     </ul>
                     </div>
                 <div className="logout-button">

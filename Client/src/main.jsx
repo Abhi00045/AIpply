@@ -12,6 +12,7 @@ import { JobApplicant } from './Components/Applicant.main.jsx'
 import { Signup } from './Pages/Authentication/Signup.jsx'
 import { Login } from './Pages/Authentication/Login.jsx'
 import { Recuriter } from './Pages/Recuriter/Recuriter.jsx'
+import MockInterviews from './Pages/Applicant/MockInterviews.jsx'
 
 const router = createBrowserRouter([
   // {
@@ -27,16 +28,16 @@ const router = createBrowserRouter([
         children:[
           {
 
-            element:<JobApplicant/>,
-            path:'/applicant/dashboard'
+            element:<FindJobs/>,
+            path:'/applicant/findjobs'
           },
           {
             element:<Profile/>,
             path:"/applicant/profile"
           },
           {
-            element:<FindJobs/>,
-            path:"/applicant/findjobs"
+            element:<MockInterviews/>,
+            path:"/applicant/MockInterviews"
           },
           {
             element:<Applications/>,

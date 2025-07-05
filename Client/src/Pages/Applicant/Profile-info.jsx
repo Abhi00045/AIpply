@@ -98,7 +98,7 @@ export const ProfileInfo = ()=>{
 
                 </div>
             {/* <HeaderCard/> */}
-            <ResumeSocialCard className ={`section ${activeTab === 'resume' ? 'active' : ''}`}/>
+            {/* <ResumeSocialCard className ={`section ${activeTab === 'resume' ? 'active' : ''}`}/> */}
         </div>
         
     </div>
