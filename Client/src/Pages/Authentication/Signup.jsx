@@ -73,7 +73,8 @@ export const Signup = () => {
               </option>
             </select>
 
-            <button className="signup-btn" onClick={submitingUsers}>
+            <button
+             className="signup-btn" onClick={submitingUsers}>
               Create Account
             </button>
 
