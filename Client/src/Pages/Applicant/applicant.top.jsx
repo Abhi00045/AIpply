@@ -8,8 +8,6 @@ import { ProfileInfo } from "./Profile-info";
 
 export const Profile =()=>{
 
-
-
     return(
     <>
     

@@ -4,15 +4,13 @@ import './index.css'
 import { App } from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Mainpage from './Pages/Mainpage'
-import { Profile } from './Pages/Applicant/Profile'
-import { FindJobs } from './Pages/Applicant/FindJobs'
 
 import { Applications } from './Pages/Applicant/Applications'
-import { JobApplicant } from './Components/Applicant.main.jsx'
+import { FindJobsForApplicant, JobApplicant, MockInterviewForApplicant } from './Components/Applicant.main.jsx'
 import { Signup } from './Pages/Authentication/Signup.jsx'
 import { Login } from './Pages/Authentication/Login.jsx'
 import { Recuriter } from './Pages/Recuriter/Recuriter.jsx'
-import MockInterviews from './Pages/Applicant/MockInterviews.jsx'
+
 
 const router = createBrowserRouter([
   // {
@@ -25,26 +23,24 @@ const router = createBrowserRouter([
       {
         element:<JobApplicant/>,
         path:'/applicant',
-        children:[
+      },
           {
 
-            element:<FindJobs/>,
+            element:<FindJobsForApplicant/>,
             path:'/applicant/findjobs'
           },
+          // {
+          //   element:<Profile/>,
+          //   path:"/applicant/profile"
+          // },
           {
-            element:<Profile/>,
-            path:"/applicant/profile"
-          },
-          {
-            element:<MockInterviews/>,
+            element:<MockInterviewForApplicant/>,
             path:"/applicant/MockInterviews"
           },
           {
             element:<Applications/>,
             path:"/applicant/applications"
-          }
-        ]
-      },
+          },
       {
         element:<Signup/>,
         path:"/signup"
