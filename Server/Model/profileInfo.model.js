@@ -21,8 +21,8 @@ const EducationSchema = new mongoose.Schema({
 const profileInfoschema = new Schema({
 
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    fullName: { type: Schema.Types.fullName , ref: 'User', required: true },
-    email: {type : Schema.Types.email , ref:'User',required:true},
+    fullName: { type: String , ref: 'User', required: true },
+    email: {type: String , ref:'User',required:true},
     countrycode:{type:String , required:true},
     phonenumber:{type:String , required:true , default:"+91"},
     state:{type:String , required:true},

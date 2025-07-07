@@ -9,12 +9,15 @@ export const userPost = async (req , res)=>{
 export const getUser = async (req , res)=>{
 
     const {email , password} = req.query;
+    console.log(email,password);
+    
 
     try{
         const user = await User.findOne({email});
 
         if(!user){
-            return res.json("email not found")
+            return res.json("email not found");
+            console.log("error");   
         }
 
         if(user.password !== password){
