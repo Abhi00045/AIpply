@@ -2,6 +2,7 @@ import './HowItWorks.css';
 import heroImage from '../public/hero-image.png'
 import HowItWorks from './Howitworks';
 import Contact from './contact';
+import Testimonials from './Testinomals';
 
 const HeroSection = () => {
     return (
@@ -22,6 +23,8 @@ const HeroSection = () => {
         </div>
       </section>
        <div id='Howitworks'>{<HowItWorks/>}</div>
+
+       <Testimonials/>
        <div id="contacts"><Contact/></div>
        </>
     );

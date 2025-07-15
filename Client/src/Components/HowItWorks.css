@@ -76,7 +76,7 @@
   align-items: center;
   justify-content: space-between;
   
-  padding: 80px 60px;
+  padding: 10px 80px 10px 80px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   background: transparent;
   gap: 60px;
@@ -108,10 +108,10 @@
 }
 
 .hero-image {
-    position: absolute;
+    /* position: absolute;
     right: 6%;
     bottom: -90px; 
-    z-index: 1;
+    z-index: 1; */
     width: 35%;
   }
   
