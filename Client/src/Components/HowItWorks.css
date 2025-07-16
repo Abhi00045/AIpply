@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
 #Howitworks{
-    padding: 20px;
+    padding: 20px 80px 20px 80px;
+}
+#scroller{
+  scroll-behavior: smooth;
 }
 .how-it-works {
-    background-color: #212020; /* Black background */
+    background-color:#234f92; /* Black background */
     color: rgb(255, 255, 255);
     padding: 60px 20px;
     text-align: center;
@@ -13,13 +16,13 @@
   .how-it-works h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #ccc;
+    color: #ffffff;
   }
   
   .how-it-works .subtitle {
     font-size: 1.1rem;
     margin-bottom: 40px;
-    color: #ccc;
+    color: #ffffff;
   }
   
   .steps-container {
@@ -39,8 +42,8 @@
   }
   
   .icon-circle {
-    background: white;
-    color: #000;
+    background: rgb(253, 253, 253);
+    color: #ffffff;
     font-size: 2rem;
     width: 80px;
     height: 80px;
@@ -58,7 +61,7 @@
   
   .step p {
     font-size: 0.95rem;
-    color: #bbb;
+    color: #ffffff;
   }
   
   /* ----------------------------------------------------------------------------- */
@@ -72,6 +75,7 @@
  /* Hero-section */
 
 .hero-section {
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
