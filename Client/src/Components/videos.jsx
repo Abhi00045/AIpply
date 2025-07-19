@@ -26,7 +26,7 @@ const InterviewStats = () => {
         <div style={styles.chatBox}>
           <h4>Interview Conversation</h4>
           <div style={styles.chatMessage}>
-            <strong>AI Interviewer:</strong> Hi Developerthink, welcome! What motivated you to apply for our DevOps Engineer role at Nexora Tech?
+            <strong>AI Interviewer:</strong> Hey Dev, welcome! What motivated you to apply for our Mern dev role at Hexawave tech?
           </div>
         </div>
       </div>

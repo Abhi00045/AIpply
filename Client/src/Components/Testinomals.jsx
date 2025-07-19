@@ -1,4 +1,5 @@
 import React from "react";
+import mainImage from '../public/mainimage.png'
 
 const Testimonials = () => {
   const testimonials = [
@@ -36,8 +37,7 @@ const Testimonials = () => {
       <div style={styles.content}>
         <div style={styles.left}>
           <img
-            src="https://img.freepik.com/free-photo/portrait-happy-student-girl-holding-books-smiling_176420-28156.jpg"
-            alt="Testimonial"
+            src={mainImage}
             style={styles.mainImage}
           />
         </div>
@@ -93,7 +93,7 @@ const styles = {
     flex: "1 1 300px",
   },
   mainImage: {
-    width: "100%",
+    width: "70%",
     borderRadius: "10px",
   },
   right: {

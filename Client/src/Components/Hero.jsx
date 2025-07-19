@@ -4,6 +4,7 @@ import HowItWorks from './Howitworks';
 import Contact from './contact';
 import Testimonials from './Testinomals';
 import InterviewStats from './videos';
+import mainImage from '../public/mainimage.png'
 
 const HeroSection = () => {
     return (

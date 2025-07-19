@@ -10,6 +10,7 @@ const Mainpage = ()=>{
         <>
        <div id='scroller' >
         <Navbar/>
+        
        <HeroSection/>
        </div>
         </>
