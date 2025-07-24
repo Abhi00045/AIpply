@@ -1,15 +1,22 @@
 import User from '../Model/user.model.js'
+// import bcrypt from 'bcrypt'
 
 export const userPost = async (req , res)=>{
-    const newUser = new User(req.body);
-    const newUserPosted = await newUser.save();
-    res.json(newUserPosted);
+    // const newUser = new User(req.body);
+    // const newUserPosted = await newUser.save();
+    // res.json(newUserPosted);
+    // console.log(req.body);
+    
+    const { fullname , email ,password , role } = req.body;
+    res.json({
+        fullname , email ,password , role
+    })
 }
 
 export const getUser = async (req , res)=>{
 
     const {email , password} = req.query;
-    console.log(email,password);
+    // console.log(email,password);
     
 
     try{
