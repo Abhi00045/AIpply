@@ -75,3 +75,45 @@
     color: #234f92;
 }
 
+@media (max-width: 768px) {
+  .main-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .list-navbar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .button-navbar {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .button-one,
+  .button-two {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .button-one a,
+  .button-two a {
+    display: block;
+    width: 100%;
+  }
+}

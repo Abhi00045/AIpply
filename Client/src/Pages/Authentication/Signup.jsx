@@ -2,20 +2,29 @@ import "../Authentication/Auth.css";
 import loginImage from "../../public/loginimage.png";
 import { useState } from "react";
 import axios from "axios";
+import { Login } from "./Login";
 
 export const Signup = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [role, setRole] = useState();
+  const [confirmpasswrd ,checkpassword]= useState();
+   const [msg, setMsg] = useState('');
 
-  const submitingUsers = (e) => {
-    e.preventDefault();
+
+        const submitingUsers = (e) => {
+          if(password === confirmpasswrd){
+            e.preventDefault();
     // console.log(name, email, password, role);
     axios
-      .post("http://localhost:3011/register", { fullname: name, email, password, role })
+      .post("http://localhost:3011/register", { fullname: name, email,password, role })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
+          }
+          else{
+            setMsg('❌ Check you password');
+          }
   };
 
   return (
@@ -56,6 +65,7 @@ export const Signup = () => {
               id="inp"
               type="password"
               placeholder="Re-enter your password"
+              onChange={(e)=>checkpassword(e.target.value)}
             />
 
             <label htmlFor="Role">Who Are You?</label>
@@ -82,6 +92,7 @@ export const Signup = () => {
               Already have an account? <a href="/login">Log in</a>
             </p>
           </form>
+          <p style={{ color: 'red' }}>{msg}</p>
         </div>
 
         <div className="signup-right">
