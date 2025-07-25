@@ -13,7 +13,7 @@ export const Signup = () => {
     e.preventDefault();
     // console.log(name, email, password, role);
     axios
-      .post("http://localhost:3011/register", { fullName: name, email, password, role })
+      .post("http://localhost:3011/register", { fullname: name, email, password, role })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
