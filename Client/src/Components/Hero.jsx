@@ -3,7 +3,7 @@ import heroImage from '../public/hero-image.png'
 import HowItWorks from './Howitworks';
 import Contact from './contact';
 import Testimonials from './Testinomals';
-import InterviewStats from './videos';
+import InterviewStats from './Interviewstats';
 import mainImage from '../public/mainimage.png'
 
 const HeroSection = () => {

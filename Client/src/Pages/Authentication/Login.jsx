@@ -17,7 +17,7 @@ export const Login = () => {
         email,
         password,
       });
-      // console.log(email , password);
+      console.log(email , password);
       
 
       if (res.status === 200) {
