@@ -7,10 +7,11 @@ export const userPost = async (req , res)=>{
     // res.json(newUserPosted);
     // console.log(req.body);
     
-    const { fullname , email ,password , role } = req.body;
-    res.json({
-        fullname , email ,password , role
-    })
+    const { fullname, email ,password, role } = req.body;
+    // res.json({
+    //      email ,password , role
+    // })
+    console.log(fullname,email ,password, role)
 }
 
 export const getUser = async (req , res)=>{
