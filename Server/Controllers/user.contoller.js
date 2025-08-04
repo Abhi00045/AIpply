@@ -10,7 +10,7 @@ export const userPost = async (req , res)=>{
 
      const existingUser = await User.findOne({ email });
     if (existingUser) {
-        // console.log("Exist");
+        console.log("Exist");
 
       return res.status(409).json({ message: "Email already exists" });
     }

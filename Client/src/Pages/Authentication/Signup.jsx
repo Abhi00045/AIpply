@@ -115,8 +115,11 @@ export const Signup = () => {
       </div>
       {
         userExist && (
-          <div className="popup-center">
-        <p>❗User Already Exist</p>
+           <div className="popup-center">
+        <p>❗User Already Exist <br /><br />You Want to
+        <a href="/login">Login</a>
+        </p>
+        
       </div>
         )
       }
