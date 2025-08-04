@@ -3,6 +3,7 @@ import '../Authentication/Auth.css';
 import loginImage from '../../public/loginimage.png';
 import { useState } from 'react';
 import axios from 'axios';
+import { redirect } from 'react-router';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.get('http://localhost:3011/login', {
+      const res = await axios.post('http://localhost:3011/login', {
         email,
         password,
       });
@@ -22,10 +23,12 @@ export const Login = () => {
 
       if (res.status === 200) {
         setMsg('✅ Login successful!');
-        console.log(res.data);
+        // redirect("/applicant")
+      }
+      if(res.status===410){
+        setMsg("Password notmatch to the user")
       }
     } catch (error) {
-      
         setMsg('❌ Something went wrong.');
       console.error(error);
     }
@@ -47,6 +50,7 @@ export const Login = () => {
               type="email"
               placeholder="mike142@yourmail.com"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <div className="link-box">
               <a href="#">I can’t remember</a>
@@ -59,6 +63,8 @@ export const Login = () => {
                 type="password"
                 placeholder="enter your password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
+
               />
             </div>
             <div className="link-box">
