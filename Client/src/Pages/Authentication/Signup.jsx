@@ -3,6 +3,7 @@ import loginImage from "../../public/loginimage.png";
 import { useState } from "react";
 import axios from "axios";
 import { Login } from "./Login";
+import signupNew from "../../public/signupNew.png"
 
 export const Signup = () => {
   
@@ -107,7 +108,7 @@ export const Signup = () => {
 
         <div className="signup-right">
           <img
-            src={loginImage}
+            src={signupNew}
             alt="Job Portal Illustration"
             className="signup-illustration"
           />

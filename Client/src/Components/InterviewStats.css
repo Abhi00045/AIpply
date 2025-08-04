@@ -1,0 +1,111 @@
+.interview-container {
+  display: flex;
+   font-family: "Georgia", serif;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 60px;
+  background: #ffffff;
+  /* font-family: sans-serif; */
+}
+
+.interview-left {
+  flex: 1 1 500px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.interview-video-box {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.interview-video {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.interview-chat-box {
+     font-family: "Georgia", serif;
+  margin-top: 20px;
+  background-color: #eef2f5;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.interview-chat-title {
+
+  /* font-family: serif; */
+   font-family: "Georgia", serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.interview-chat-message {
+  margin-top: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  color: #333;
+  font-size: 14px;
+}
+
+.interview-right {
+  flex: 1 1 400px;
+}
+
+.interview-heading {
+   font-family: "Georgia", serif;
+  font-weight: 400;/* Serif style like your example */
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.interview-big-number {
+  font-size: 48px;
+  color: #6d96d7;
+  margin: 10px 0;
+}
+
+.interview-description {
+  font-size: 16px;
+  color: #444;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.interview-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.interview-stat-card {
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1 1 180px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.interview-blue {
+  background: linear-gradient(135deg, #8dacdd, #7990da);
+}
+
+.interview-purple {
+  background-color: #7f81cd;
+}
+
+.interview-green {
+  background-color: #6fe3bd;
+}
+
+.interview-percent {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+}

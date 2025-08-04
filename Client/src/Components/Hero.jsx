@@ -5,6 +5,7 @@ import Contact from './contact';
 import Testimonials from './Testinomals';
 import InterviewStats from './Interviewstats';
 import mainImage from '../public/mainimage.png'
+import Quote from './Qoute';
 
 const HeroSection = () => {
     return (
@@ -27,7 +28,7 @@ const HeroSection = () => {
       </section>
       <div id='Howitworks'>{<InterviewStats/>}</div>
        <div id='Howitworks'>{<HowItWorks/>}</div>
-
+       <Quote/>
        <Testimonials/>
        <div id="contacts"><Contact/></div>
       </div>
@@ -36,3 +37,5 @@ const HeroSection = () => {
   };
   
   export default HeroSection;
+
+  
