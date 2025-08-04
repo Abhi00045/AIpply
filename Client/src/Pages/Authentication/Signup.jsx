@@ -5,25 +5,35 @@ import axios from "axios";
 import { Login } from "./Login";
 
 export const Signup = () => {
+  
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [role, setRole] = useState();
-  const [confirmpasswrd ,checkpassword]= useState();
+  const [confirmpassword ,checkpassword]= useState();
    const [msg, setMsg] = useState('');
+   const [userExist , setUserExist] = useState(false)
 
 
         const submitingUsers = (e) => {
-          if(password === confirmpasswrd){
-            e.preventDefault();
-    // console.log(name, email, password, role);
-    axios
+          e.preventDefault(); 
+          if(password != confirmpassword){
+            alert("Check your password buddy");
+           window.onload(); 
+          }
+          if(res.status === 409){
+            setUserExist(true)
+            setTimeout(() =>
+              {
+                setUserExist(false)
+                window.onload();
+              }, 5000);
+          }
+          else{
+             axios
       .post("http://localhost:3011/register", { fullname: name, email,password, role })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
-          }
-          else{
-            setMsg('❌ Check you password');
           }
   };
 
@@ -103,6 +113,13 @@ export const Signup = () => {
           />
         </div>
       </div>
+      {
+        userExist && (
+          <div className="popup-center">
+        <p>❗User Already Exist</p>
+      </div>
+        )
+      }
     </>
   );
 };
