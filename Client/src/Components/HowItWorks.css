@@ -1,14 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-<<<<<<< HEAD
-=======
-#Howitworks{
-    padding: 20px 80px 20px 80px;
-}
-#scroller{
-  scroll-behavior: smooth;
-  
-}
->>>>>>> 197f6d55df5911c3fa27c687ff7fc88e3fb2e5b2
 .how-it-works {
   max-width: 1200px;
   margin: 0 auto;
@@ -213,25 +203,4 @@ button{
   .step p {
     font-size: 0.9rem;
   }
-}
-
-
-/* HTML: <div class="loader"></div> */
-/*  */
-.loader {
-  width: 60px;
-  aspect-ratio: 4;
-  --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
-  background: 
-    var(--_g) 0%   50%,
-    var(--_g) 50%  50%,
-    var(--_g) 100% 50%;
-  background-size: calc(100%/3) 100%;
-  animation: l7 1s infinite linear;
-
-}
-@keyframes l7 {
-    33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
-    50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
-    66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
 }
