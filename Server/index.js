@@ -15,7 +15,7 @@ app.use(express.json()); //this is the most important line inthe raw data postin
 app.use("/register", router);
 app.use("/login" , getRouter)
 
-app.use("/profileInfo",ProfileRouter);
+// app.use("/profileInfo",ProfileRouter);
 
 app.listen(3011, (req, res) => {
   Connection();

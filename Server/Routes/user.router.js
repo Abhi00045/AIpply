@@ -5,10 +5,8 @@ import { getUser, userPost } from "../Controllers/user.contoller.js";
 
 const router = express.Router();
 
-// router.post('/' , userPost);
-// router.get('/login',getUser)
 export const getRouter = express.Router();
-getRouter.get('/', getUser)
+getRouter.post('/', getUser)
 
 router.post("/",userPost)
 

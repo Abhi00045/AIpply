@@ -10,8 +10,7 @@ export const userPost = async (req , res)=>{
 
      const existingUser = await User.findOne({ email });
     if (existingUser) {
-        // console.log("Exist");
-
+        console.log("Exist");
       return res.status(409).json({ message: "Email already exists" });
     }
    
@@ -39,38 +38,28 @@ export const userPost = async (req , res)=>{
     }
     )
     // console.log(token);
-    res.cookie('token' , token);    
+    res.cookie('token' , token);  
+    
+    res.redirect("/")
 }
 
-
-
-
-
-
-
-
-
-
-
+//getting login user
 export const getUser = async (req , res)=>{
 
-    const {email , password} = req.query;
+    const {email , password} = req.body;
     console.log(email,password);
-    
-
     try{
         const user = await User.findOne({email});
-
+        //getting done
         if(!user){
-            return res.json("email not found");
-            console.log("error");   
+            return res.status(409).json("email not found");  
         }
-
-        if(user.password !== password){
-            return  res.json("Incorrect password")
-        }
-
-        res.json("Login successfully")
+        bcrypt.compare(password, user.password, function(err, result) {
+           if(result) res.status(200).send("login");
+           else console.log("eror");
+           
+           
+        });
     }catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });

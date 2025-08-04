@@ -3,7 +3,6 @@ import loginImage from "../../public/loginimage.png";
 import { useState } from "react";
 import axios from "axios";
 import { Login } from "./Login";
-import signupNew from "../../public/signupNew.png"
 
 export const Signup = () => {
   
@@ -15,6 +14,8 @@ export const Signup = () => {
    const [msg, setMsg] = useState('');
    const [userExist , setUserExist] = useState(false)
 
+   const navigate = useNavigate();
+
 
         const submitingUsers = (e) => {
           e.preventDefault(); 
@@ -22,20 +23,22 @@ export const Signup = () => {
             alert("Check your password buddy");
            window.onload(); 
           }
-          if(res.status === 409){
-            setUserExist(true)
-            setTimeout(() =>
-              {
-                setUserExist(false)
-                window.onload();
-              }, 5000);
-          }
-          else{
-             axios
-      .post("http://localhost:3011/register", { fullname: name, email,password, role })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-          }
+          // if(res.status === 409){
+          //   setUserExist(true)
+          //   setTimeout(() =>
+          //     {
+          //       setUserExist(false)
+          //       window.onload();
+          //     }, 5000);
+          // }
+          axios
+          .post("http://localhost:3011/register", { fullname: name, email,password, role })
+          .then((result)=>{
+            console.log(result);
+            alert("created successful")
+            navigate("/applicant") //redirecting to that page
+          })
+          .catch((err) => console.log(err));
   };
 
   return (
@@ -53,7 +56,9 @@ export const Signup = () => {
               id="inp"
               type="text"
               placeholder="Enter your Name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)
+              }
+              required
             />
             <label>Email</label>
             <input
@@ -61,6 +66,7 @@ export const Signup = () => {
               type="email"
               placeholder="youremail@example.com"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
 
             <label>Password</label>
@@ -69,6 +75,7 @@ export const Signup = () => {
               type="password"
               placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
             <label>Confirm Password</label>
@@ -77,6 +84,7 @@ export const Signup = () => {
               type="password"
               placeholder="Re-enter your password"
               onChange={(e)=>checkpassword(e.target.value)}
+              required
             />
 
             <label htmlFor="Role">Who Are You?</label>
@@ -85,6 +93,7 @@ export const Signup = () => {
               id="inp"
               name="Who Are You ?"
               onChange={(e) => setRole(e.target.value)}
+              required
             >
               <option id="inp" value="jobseeker">
                 I am a jobseeker
@@ -116,8 +125,11 @@ export const Signup = () => {
       </div>
       {
         userExist && (
-          <div className="popup-center">
-        <p>❗User Already Exist</p>
+           <div className="popup-center">
+        <p>❗User Already Exist <br /><br />You Want to
+        <a href="/login">Login</a>
+        </p>
+        
       </div>
         )
       }
