@@ -1,6 +1,5 @@
 
 import '../Authentication/Auth.css';
-import loginImage from '../../public/loginimage.png';
 import newLogin from '../../public/signupNew.png'
 import { useState } from 'react';
 import axios from 'axios';

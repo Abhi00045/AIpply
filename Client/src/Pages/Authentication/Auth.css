@@ -1,5 +1,4 @@
 /* Auth.css - modern login UI (drop into your project and import) */
-
 /* Page wrapper */
 .login-container {
   min-height: 100vh;
@@ -24,7 +23,7 @@
   overflow: hidden;
   align-items: stretch;
   gap: 0;
-  height: 80vh;
+  height: 90vh;
 }
 
 /* Left: form */
@@ -148,14 +147,7 @@
 }
 
 /* Right: illustration */
-.illustration-section {
-  flex: 1 ;
-  /* background: linear-gradient(180deg, #f3f7fb 0%, #ffffff 100%);
-  display: flex; */
-  align-items: center;
-  justify-content: center;
-  /* padding: 28px; */
-}
+
 
 /* Illustration image style */
 .illustration-section img {
