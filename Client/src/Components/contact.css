@@ -14,6 +14,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   margin-bottom: 40px;
+  color: #4b4b4b;
 }
 
 .contact-info p {
@@ -22,12 +23,14 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #4b4b4b;
 }
 
 .useful-links ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  color: #4b4b4b;
 }
 
 .useful-links li {
@@ -35,6 +38,7 @@
   margin-bottom: 8px;
   cursor: pointer;
   transition: color 0.3s;
+  color: #4b4b4b;
 }
 
 .useful-links li:hover {

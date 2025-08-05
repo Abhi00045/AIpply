@@ -3,6 +3,9 @@ import loginImage from "../../public/loginimage.png";
 import { useState } from "react";
 import axios from "axios";
 import { Login } from "./Login";
+import signupNew from '../../public/signupNew.png'
+
+
 
 export const Signup = () => {
   
@@ -14,7 +17,7 @@ export const Signup = () => {
    const [msg, setMsg] = useState('');
    const [userExist , setUserExist] = useState(false)
 
-   const navigate = useNavigate();
+  //  const navigate = useNavigate();
 
 
         const submitingUsers = (e) => {
@@ -36,7 +39,7 @@ export const Signup = () => {
           .then((result)=>{
             console.log(result);
             alert("created successful")
-            navigate("/applicant") //redirecting to that page
+            // navigate("/applicant") //redirecting to that page
           })
           .catch((err) => console.log(err));
   };
