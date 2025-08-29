@@ -10,25 +10,34 @@ export const Login = () => {
   const [msg, setMsg] = useState('');
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const res = await axios.get('http://localhost:3011/login', {
-        email,
-        password,
-      });
-      console.log(email , password);
-      
+  try {
+    const res = await axios.post('http://localhost:3011/login', {
+      email,
+      password,
+    });
 
-      if (res.status === 200) {
-        setMsg('✅ Login successful!');
-        console.log(res.data);
-      }
-    } catch (error) {
-      
-        setMsg('❌ Something went wrong.');
-      console.error(error);
+    if (res.status === 200) {
+      setMsg('✅ Login successful!');
+      console.log(res.data);
     }
+  } catch (error) {
+    if (error.response) {
+      // Server responded with error code
+      if (error.response.status === 409) {
+        setMsg('❌ Email not found.');
+      } else if (error.response.status === 401) {
+        setMsg('❌ Invalid password.');
+      } else {
+        setMsg('❌ Something went wrong.');
+      }
+    } else {
+      // Network error / CORS issue
+      setMsg('❌ Cannot connect to server.');
+    }
+    console.log(error);
+  }
   };
 
   return (
