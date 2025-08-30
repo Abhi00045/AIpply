@@ -13,7 +13,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.json()); //this is the most important line inthe raw data posting in job portal
-app.use("/register", router);
+app.use("/signup", router);
 app.use("/login" , getRouter)
 
 // app.use("/profileInfo",ProfileRouter);
