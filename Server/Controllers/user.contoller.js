@@ -36,7 +36,6 @@ export const userPost = async (req , res)=>{
         expiresIn:'7d'
     }
     )
-    // console.log(token);
     res.cookie('token' , token);  
     
     res.redirect("/")
