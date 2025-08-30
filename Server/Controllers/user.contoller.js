@@ -46,7 +46,7 @@ export const userPost = async (req , res)=>{
 export const getUser = async (req , res)=>{
 
     const {email , password} = req.body;
-    console.log(email,password);
+    // console.log(email,password);
     try{
         const user = await User.findOne({email});
         //getting done

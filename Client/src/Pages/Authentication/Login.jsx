@@ -22,7 +22,7 @@ export const Login = () => {
 
     if (res.status === 200) {
       setMsg('✅ Login successful!');
-      console.log(res.data);
+      localStorage.setItem("userEmail", res.data.email);
       navigate('/applicant');
     }
   } catch (error) {
@@ -34,8 +34,6 @@ export const Login = () => {
       } else {
         setMsg('❌ Something went wrong');
       }
-    } else {
-      setMsg('❌ Cannot connect to server');
     }
     console.log(error);
   }

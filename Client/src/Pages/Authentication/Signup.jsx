@@ -32,6 +32,8 @@ export const Signup = () => {
 
       console.log(result);
       setMsg("✅ Account created successfully");
+      setUserExist(false);
+      localStorage.setItem("userEmail", result.data.email);
 
       // Redirect according to role
       if (role === "jobseeker") {

@@ -4,9 +4,18 @@ import '../Applicant/Apply.css'
 import { HeaderCard } from "../../Components/Header-card";
 import { ResumeSocialCard } from "../../Components/Resume+Social-card";
 import { ProfileInfo } from "./Profile-info";
+import { useState, useEffect } from "react";
+
 
 
 export const Profile =()=>{
+
+    const[email , setEmail] =useState("");
+
+    useEffect(()=>{
+        const storedEmail = localStorage.getItem("userEmail");
+        setEmail(storedEmail);
+    },[]);
 
     return(
     <>
@@ -18,7 +27,7 @@ export const Profile =()=>{
                 </div>
                 <div className="menu-list">
                 {/* <IoMdNotifications color="white" /> */}
-                <pre>info@gmail.com</pre></div>
+                <pre>{email}</pre></div>
                 </div>
                 <hr />
                 <div className="profile-content">
