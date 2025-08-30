@@ -13,9 +13,6 @@ import { Recuriter } from './Pages/Recuriter/Recuriter.jsx'
 
 
 const router = createBrowserRouter([
-  // {
-  //   element:<Mainpage/>,
-  //   children=[ok ok ok
       {
         element:<Mainpage/>,
         path:"/"
@@ -55,7 +52,6 @@ const router = createBrowserRouter([
       }
 
 ])
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -3,11 +3,13 @@ import '../Authentication/Auth.css';
 import newLogin from '../../public/signupNew.png'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
   e.preventDefault();
@@ -21,20 +23,19 @@ export const Login = () => {
     if (res.status === 200) {
       setMsg('✅ Login successful!');
       console.log(res.data);
+      navigate('/applicant');
     }
   } catch (error) {
     if (error.response) {
-      // Server responded with error code
       if (error.response.status === 409) {
-        setMsg('❌ Email not found.');
+        setMsg('❌ Email not found');
       } else if (error.response.status === 401) {
-        setMsg('❌ Invalid password.');
+        setMsg('❌ Invalid password');
       } else {
-        setMsg('❌ Something went wrong.');
+        setMsg('❌ Something went wrong');
       }
     } else {
-      // Network error / CORS issue
-      setMsg('❌ Cannot connect to server.');
+      setMsg('❌ Cannot connect to server');
     }
     console.log(error);
   }
