@@ -32,7 +32,7 @@ export const Login = () => {
       } else if (error.response.status === 401) {
         setMsg('❌ Invalid password');
       } else {
-        setMsg('❌ Something went wrong');
+        setMsg('❌ yes Something went wrong');
       }
     }
     console.log(error);
