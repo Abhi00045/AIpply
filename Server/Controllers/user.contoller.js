@@ -16,7 +16,6 @@ export const userPost = async (req , res)=>{
    
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     
-
     const newUser = new User({
       fullName: fullname,
       email,
@@ -31,14 +30,18 @@ export const userPost = async (req , res)=>{
         userId: savedUser._id,
         userEmail : savedUser.email
     },
-    process.env.JWT_SECRET,
-    {
-        expiresIn:'7d'
-    }
-    )
-    res.cookie('token' , token);  
-    
-    res.redirect("/")
+    process.env.JWT_SECRET,{expiresIn:'7d'})
+
+    res.status(201).json({
+        message: "Signup successful",
+        user: {
+            id: savedUser._id,
+            fullName: savedUser.fullName,
+            email: savedUser.email,
+            role: savedUser.role
+        },
+        token
+    });
 }
 
 //getting login user
@@ -59,5 +62,4 @@ export const getUser = async (req , res)=>{
         console.error(err);
         res.status(500).json({ message: 'Server error' });
       }
-
 }

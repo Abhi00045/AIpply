@@ -29,21 +29,20 @@ export const Signup = () => {
         password,
         role,
       });
-
-      console.log(result);
+      console.log("Signup Response:", result.data);
+      // Save token + user object in localStorage
+      localStorage.setItem("token", result.data.token);
+      localStorage.setItem("user", JSON.stringify(result.data.user));
       setMsg("✅ Account created successfully");
       setUserExist(false);
-      localStorage.setItem("userEmail", result.data.email);
 
-      // Redirect according to role
-      if (role === "jobseeker") {
-        navigate("/applicant");
-      } else {
-        navigate("/recruiter");
-      }
-    } catch (err) {
+      // Redirect to recruiter
+      if (role === "jobseeker") {navigate("/applicant");}
+      else {navigate("/recruiter");}
+
+    } 
+    catch (err) {
       console.log(err);
-
       if (err.response && err.response.status === 409) {
         setUserExist(true);
         // navigate("/login");
