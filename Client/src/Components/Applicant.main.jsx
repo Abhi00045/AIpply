@@ -4,10 +4,21 @@ import { Profile } from '../Pages/Applicant/applicant.top';
 import { FindJobs } from '../Pages/Applicant/FindJobs';
 import MockInterviews from '../Pages/Applicant/MockInterviews';
 import './Applicant.css'
-import { Link } from "react-router";
+import { Link, redirect } from "react-router";
+// import { useNavigate } from 'react-router-dom';
+
+// const navigate = useNavigate();
 
 
 export const JobApplicant = ()=>{
+
+    const handleLogout = () => {
+        // console.log("poora");
+        localStorage.removeItem("token");  // remove token
+        localStorage.removeItem("user");   // remove user details
+        redirect("/login")
+      };
+      
 
     return(
         <>
@@ -27,7 +38,7 @@ export const JobApplicant = ()=>{
                     </ul>
                     </div>
                 <div className="logout-button">
-                <button className="logout">Log out</button>
+                <button className="logout" onClick={handleLogout}>Log out</button>
                 </div>
                 </div>
             </div>

@@ -21,8 +21,11 @@ export const Login = () => {
     });
 
     if (res.status === 200) {
+      console.log("Signup Response:", result.data);
+      // Save token + user object in localStorage
+      localStorage.setItem("token", result.data.token);
+      localStorage.setItem("user", JSON.stringify(result.data.user));
       setMsg('✅ Login successful!');
-      localStorage.setItem("userEmail", res.data.email);
       navigate('/applicant');
     }
   } catch (error) {
