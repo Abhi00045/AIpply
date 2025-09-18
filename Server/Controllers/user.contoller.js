@@ -3,7 +3,7 @@ import 'dotenv/config'
 import jwt from 'jsonwebtoken'
 import bcrypt, { hash } from 'bcrypt'
 import cookieParser from "cookie-parser";
-app.use(cookieParser());
+// app.use(cookieParser());
 const saltRounds = 10;
 
 export const userPost = async (req , res)=>{

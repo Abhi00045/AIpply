@@ -11,7 +11,7 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.json()); //this is the most important line inthe raw data posting in job portal
 app.use("/signup", router);
 app.use("/login" , getRouter)
