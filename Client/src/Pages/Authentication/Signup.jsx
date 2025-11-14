@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import signupNew from "../../public/signupNew.png";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../utils/Loader";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -54,6 +55,7 @@ export const Signup = () => {
 
   return (
     <>
+    <Loader/>
       <div className="signup-container">
         <div className="signup-left">
           <h1 className="title">Sign Up</h1>
@@ -71,6 +73,8 @@ export const Signup = () => {
               onChange={(e) => setName(e.target.value)}
               required
             />
+
+
 
             <label>Email</label>
             <input
