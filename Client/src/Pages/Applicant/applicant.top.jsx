@@ -10,12 +10,16 @@ import { useState, useEffect } from "react";
 
 export const Profile =()=>{
 
-    const[email , setEmail] =useState("");
+        const[email, setEmail]= useState('')
 
     useEffect(()=>{
-        const storedEmail = localStorage.getItem("userEmail");
-        setEmail(storedEmail);
-    },[]);
+
+    const userEmail = localStorage.getItem('user')
+    if(userEmail){
+      const user = JSON.parse(userEmail)
+      setEmail(user.email)
+    }
+    },[])
 
     return(
     <>

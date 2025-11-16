@@ -6,6 +6,9 @@ import { useState } from "react"
 export const ProfileInfo = ()=>{
 
     const [activeTab, setActiveTab] = useState('personal');
+
+
+
     
 
     return <>
@@ -35,13 +38,14 @@ export const ProfileInfo = ()=>{
         onClick={()=>setActiveTab('resume')}
         >Resume and Socials</button>
       </div>
-        <div className="left-wala-container">
+        <div className="text-black">
 
-                <div className={`section ${activeTab === 'personal' ? 'active' : ''}`}>
+                <div className={`section ${activeTab === 'personal' ? 'active' : ''}`} >
                 {/* <h2>Personal Details</h2> */}
-                <input type="text" placeholder="Email" />
+                <input type="text" placeholder="Name" />
+
                 <div className="numersection">
-                <select>
+                <select className="">
                 <option value="+91">+91 (India)</option>
                 <option value="+1">+1 (USA)</option>
                 <option value="+44">+44 (UK)</option>
@@ -51,7 +55,7 @@ export const ProfileInfo = ()=>{
                 <option value="+33">+33 (France)</option>
                 <option value="+86">+86 (China)</option>
                  </select>
-                <input type="number" placeholder="Phone numeber"/>
+                <input type="number" placeholder="Phone number"/>
                 </div>
                 <input placeholder="State" />
                 <input placeholder="Address" />
@@ -60,7 +64,7 @@ export const ProfileInfo = ()=>{
                 <button>Save</button>
                 </div>
                 <div className={`section ${activeTab === 'work' ? 'active' : ''}`}>
-                    <h2>Work Expirence</h2>
+                    <h2 className="mb-1.5">Work Expirence</h2>
                     <input type="text" placeholder="Company name" />
                     <input type="text" placeholder="Job role" />
                     <input type="text" placeholder="location" />
