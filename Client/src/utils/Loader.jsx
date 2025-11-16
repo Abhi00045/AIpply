@@ -4,7 +4,7 @@ import {ScaleLoader} from 'react-spinners'
 function Loader() {
   return (
     <>
-    <div>
+    <div className='h-full w-full bg-white'>
         <ScaleLoader
   color="#228ff2"
   height={50}

@@ -14,7 +14,7 @@ export const Signup = () => {
   const [msg, setMsg] = useState("");
   const [userExist, setUserExist] = useState(false);
   const navigate = useNavigate();
-  const [loader , setLoading] = useState(false)
+  // const [loader , setLoading] = useState(true)
 
   const submitingUsers = async (e) => {
     e.preventDefault();
@@ -23,6 +23,7 @@ export const Signup = () => {
       alert("❗ Passwords do not match");
       return;
     }
+
 
     try {
       const result = await axios.post("http://localhost:3011/signup", {
@@ -36,11 +37,28 @@ export const Signup = () => {
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("user", JSON.stringify(result.data.user));
       setMsg("✅ Account created successfully");
+
+
       setUserExist(false);
 
       // Redirect to recruiter
-      if (role === "jobseeker") {navigate("/applicant");}
-      else {navigate("/recruiter");}
+      if (role === "jobseeker") {
+        setTimeout(() => {
+      {
+        <Loader/>
+      }
+    }, 10000);
+        navigate("/applicant");}
+      else {
+         setTimeout(() => {
+      {
+        <Loader/>
+      }
+    }, 3000);
+        navigate("/recruiter");
+      }
+
+
 
     } 
     catch (err) {

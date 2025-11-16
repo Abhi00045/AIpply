@@ -15,19 +15,17 @@ export const Login = () => {
   e.preventDefault();
 
   try {
-    const res = await axios.post('http://localhost:3011/login', {
+    const result = await axios.post('http://localhost:3011/login', {
       email,
       password,
     });
 
-    if (res.status === 200) {
       // console.log("Signup Response:", result.data);
       // Save token + user object in localStorage
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("user", JSON.stringify(result.data.user));
       setMsg('✅ Login successful!');
       navigate('/applicant');
-    }
   } catch (error) {
     if (error.response) {
       if (error.response.status === 409) {
