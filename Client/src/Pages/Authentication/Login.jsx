@@ -21,7 +21,7 @@ export const Login = () => {
     });
 
     if (res.status === 200) {
-      console.log("Signup Response:", result.data);
+      // console.log("Signup Response:", result.data);
       // Save token + user object in localStorage
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("user", JSON.stringify(result.data.user));
@@ -49,7 +49,7 @@ export const Login = () => {
           <div className="logo">AIpply</div>
           <h2>Log in</h2>
           <p>
-            or <a href="/signup">create an account</a> if you don’t have one yet
+            or <a className='text-blue-500 underline' href="/signup">create an account</a> if you don’t have one yet
           </p>
           <form onSubmit={handleLogin}>
             <label>Email</label>

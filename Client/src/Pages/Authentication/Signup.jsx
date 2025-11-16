@@ -14,6 +14,7 @@ export const Signup = () => {
   const [msg, setMsg] = useState("");
   const [userExist, setUserExist] = useState(false);
   const navigate = useNavigate();
+  const [loader , setLoading] = useState(false)
 
   const submitingUsers = async (e) => {
     e.preventDefault();
@@ -55,7 +56,6 @@ export const Signup = () => {
 
   return (
     <>
-    <Loader/>
       <div className="signup-container">
         <div className="signup-left">
           <h1 className="title">Sign Up</h1>
