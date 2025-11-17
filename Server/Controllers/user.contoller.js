@@ -65,7 +65,6 @@ export const getUser = async (req , res)=>{
             },
             process.env.JWT_SECRET,{expiresIn:'7d'})
 
-            res.co
         
             res.status(201).json({
                 message: "login Successfull",
