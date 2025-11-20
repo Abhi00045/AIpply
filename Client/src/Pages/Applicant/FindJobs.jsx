@@ -29,7 +29,7 @@ export const FindJobs=()=>{
                     <pre>{email}</pre></div>
                     </div>
                     <hr />
-                    <div className="">
+                    <div className="m-10 p-14">
                     <JobCards/> 
             </div>
                 </div>

@@ -1,279 +1,101 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+// const jobs = [
+//   {
+//     id: 1,
+//     company: "Chai aur Code",
+//     logo: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+//     role: "Frontend Developer",
+//     location: "Mumbai",
+//     experience: "1 year",
+//     salary: "3 - 5 LPA",
+//     type: "Full-time",
+//     difficulty: "Easy",
+//     badge: "Remote",
+//     skills: ["JavaScript", "ReactJS"],
+//     description:
+//       "We are looking for a Frontend Developer who can build responsive UI components and integrate APIs...",
+//   },
+//   {
+//     id: 2,
+//     company: "Google",
+//     logo: "https://cdn-icons-png.flaticon.com/512/300/300221.png",
+//     role: "Software Engineer",
+//     location: "Bangalore",
+//     experience: "2–4 years",
+//     salary: "12 - 18 LPA",
+//     type: "Hybrid",
+//     difficulty: "Medium",
+//     badge: "Hybrid",
+//     skills: ["NodeJS", "Express", "Cloud"],
+//     description:
+//       "Join our engineering team and help us build scalable backend services used by millions worldwide...",
+//   },
+//   {
+//     id: 3,
+//     company: "Microsoft",
+//     logo: "https://cdn-icons-png.flaticon.com/512/732/732221.png",
+//     role: "Full Stack Developer",
+//     location: "Hyderabad",
+//     experience: "1–3 years",
+//     salary: "8 - 12 LPA",
+//     type: "Full-time",
+//     difficulty: "Easy",
+//     badge: "Remote",
+//     skills: ["React", "MongoDB", "Tailwind"],
+//     description:
+//       "We’re hiring a passionate full-stack developer to work on enterprise products and cloud platforms...",
+//   },
+// ];
+
 
 const JobCards = () => {
-  const cardStyle = {
-    border: "2px solid #645bff",
-    borderRadius: "20px",
-    padding: "20px",
-    margin: "20px",
-    width: "350px",
-    display: "flex",
-    flexDirection: "column",  
-    justifyContent: "space-between",
-    Gap: "10px",
-    minHeight: "400px",
-    backgroundColor: "#fff",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-    fontFamily: "Arial, sans-serif",
-  };
-  const roleColour = {
-    color: "black",
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginBottom: "5px",
-  };
-
-
-  const headerStyle = {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "10px",
-  };
-
-  const logoStyle = {
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    marginRight: "10px",
-  };
-
-  const badge = {
-    padding: "4px 10px",
-    borderRadius: "20px",
-    fontSize: "12px",
-    fontWeight: "bold",
-    margin: "5px",
-    display: "inline-block",
-  };
-
-  const remoteBadge = { ...badge, backgroundColor: "#dce9ff", color: "#3f5efb" };
-  const easyBadge = { ...badge, backgroundColor: "#d6ffe0", color: "#00b262" };
-  const hardBadge = { ...badge, backgroundColor: "#ffe0e0", color: "#ff4d4d" };
-  const skillBadge = {
-    ...badge,
-    backgroundColor: "#f1f1f1",
-    color: "#333",
-    fontWeight: "normal",
-  };
-
-  const section = {
-    marginTop: "10px",
-    fontSize: "14px",
-    color: "#444",
-  };
-
-  const label = {
-    fontWeight: "bold",
-    color: "#000",
-    marginRight: "5px",
-  };
-
-  const buttonGroup = {
-    marginTop: "15px",
-    display: "flex",
-    justifyContent: "space-between",
-  };
-
-  const btn = {
-    padding: "10px 20px",
-    borderRadius: "20px",
-    border: "none",
-    cursor: "pointer",
-    fontWeight: "bold",
-  };
-
-  const detailBtn = {
-    ...btn,
-    backgroundColor: "#fff",
-    border: "1px solid #ccc",
-    color: "#333",
-  };
-
-  const applyBtn = {
-    ...btn,
-    backgroundColor: "#3f5efb",
-    color: "#fff",
-  };
-
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" ,  }}>
-      {/* Job Card 1 */}
-      <div style={cardStyle}>
-        <div style={headerStyle}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
-            alt="logo"
-            style={logoStyle}
-          />
-          <div style={roleColour}>
-            <h3 style={{ margin: 0 ,  }}>Frontend Developer</h3>
-            <small>Chai aur Code</small>
-          </div>
+    <div className="w-fit h-fit flex flex-col gap-2 p-6 font-light border border-black rounded-3xl  hover:shadow-lg">
+
+      {/* LEFT: Company Image */}
+      <div className="flex flex-row gap-14">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
+          alt="Company Logo"
+          className="w-20 h-20 rounded-full object-center border"
+        />
+          <div className="">
+          <h2 className="text-xl ">Full Stack Developer</h2>
+          <p className="text-black">Geekster (Company Name)</p>
         </div>
-        <div>
-          <span style={remoteBadge}>Remote</span>
-          <span style={easyBadge}>Easy</span>
-          <div>
-            <span style={skillBadge}>javascript</span>
-            <span style={skillBadge}>reactjs</span>
-          </div>
-        </div>
-        <div style={section}>
-          <div>
-            <span style={label}>Salary:</span>3 - 5 LPA
-          </div>
-          <div>
-            <span style={label}>Location</span>Mumbai
-          </div>
-          <div>
-            <span style={label}>Experience:</span>1 years
-          </div>
-          <div>
-            <span style={label}>Job Type:</span>full-time
-          </div>
-          <div>
-            <span style={label}>Openings:</span>1
-          </div>
-        </div>
-        <div style={buttonGroup}>
-          <button style={detailBtn}>Details</button>
-          <button style={applyBtn}>Apply Now</button>
-        </div>
+
       </div>
 
-      {/* Job Card 2 */}
-      <div style={cardStyle}>
-        <div style={headerStyle}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
-            alt="logo"
-            style={logoStyle}
-          />
-          <div style={roleColour}>
-            <h3 style={{ margin: 0 ,  }}>Frontend Developer</h3>
-            <small>Chai aur Code</small>
-          </div>
-        </div>
-        <div>
-          <span style={remoteBadge}>Remote</span>
-          <span style={easyBadge}>Easy</span>
-          <div>
-            <span style={skillBadge}>javascript</span>
-            <span style={skillBadge}>reactjs</span>
-          </div>
-        </div>
-        <div style={section}>
-          <div>
-            <span style={label}>Salary:</span>3 - 5 LPA
-          </div>
-          <div>
-            <span style={label}>Location</span>Mumbai
-          </div>
-          <div>
-            <span style={label}>Experience:</span>1 years
-          </div>
-          <div>
-            <span style={label}>Job Type:</span>full-time
-          </div>
-          <div>
-            <span style={label}>Openings:</span>1
-          </div>
-        </div>
-        <div style={buttonGroup}>
-          <button style={detailBtn}>Details</button>
-          <button style={applyBtn}>Apply Now</button>
-        </div>
-      </div>
 
-      {/* Job Card 2 */}
-      <div style={cardStyle}>
-        <div style={headerStyle}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
-            alt="logo"
-            style={logoStyle}
-          />
-          <div style={roleColour}>
-            <h3 style={{ margin: 0 ,  }}>Frontend Developer</h3>
-            <small>Chai aur Code</small>
-          </div>
+        {/* LOCATION & EXPERIENCE */}
+        <div className="flex flex-row gap-7 text-sm">
+          <p>Mumbai</p>
+          <p>0-1years</p>
         </div>
-        <div>
-          <span style={remoteBadge}>Remote</span>
-          <span style={easyBadge}>Easy</span>
-          <div>
-            <span style={skillBadge}>javascript</span>
-            <span style={skillBadge}>reactjs</span>
-          </div>
-        </div>
-        <div style={section}>
-          <div>
-            <span style={label}>Salary:</span>3 - 5 LPA
-          </div>
-          <div>
-            <span style={label}>Location</span>Mumbai
-          </div>
-          <div>
-            <span style={label}>Experience:</span>1 years
-          </div>
-          <div>
-            <span style={label}>Job Type:</span>full-time
-          </div>
-          <div>
-            <span style={label}>Openings:</span>1
-          </div>
-        </div>
-        <div style={buttonGroup}>
-          <button style={detailBtn}>Details</button>
-          <button style={applyBtn}>Apply Now</button>
-        </div>
-      </div>
 
-      {/* Job Card 2 */}
-      <div style={cardStyle}>
-        <div style={headerStyle}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
-            alt="logo"
-            style={logoStyle}
-          />
-          <div style={roleColour}>
-            <h3 style={{ margin: 0 ,  }}>Frontend Developer</h3>
-            <small>Chai aur Code</small>
-          </div>
+        {/* SHORT DESCRIPTION (2–3 lines only) */}
+          <p className="text-8xl
+          ">
+            Build scalable web applications, collaborate with backend engineers,
+            optimize UI components, and participate in code reviews for quality delivery.
+          </p>
+
+        {/* BUTTONS SECTION */}
+        <div className="flex justify-between mt-2">
+          <button className="px-4 py-2 bg-gray-100 border rounded-xl text-sm hover:bg-gray-200">
+            Mock Test
+          </button>
+
+          <button className="px-6 py-2 bg-blue-600 text-white rounded-xl text-sm hover:bg-blue-700">
+            Apply Now
+          </button>
         </div>
-        <div>
-          <span style={remoteBadge}>Remote</span>
-          <span style={easyBadge}>Easy</span>
-          <div>
-            <span style={skillBadge}>javascript</span>
-            <span style={skillBadge}>reactjs</span>
-          </div>
-        </div>
-        <div style={section}>
-          <div>
-            <span style={label}>Salary:</span>3 - 5 LPA
-          </div>
-          <div>
-            <span style={label}>Location</span>Mumbai
-          </div>
-          <div>
-            <span style={label}>Experience:</span>1 years
-          </div>
-          <div>
-            <span style={label}>Job Type:</span>full-time
-          </div>
-          <div>
-            <span style={label}>Openings:</span>1
-          </div>
-        </div>
-        <div style={buttonGroup}>
-          <button style={detailBtn}>Details</button>
-          <button style={applyBtn}>Apply Now</button>
-        </div>
-      </div>
+
     </div>
   );
 };
 
 export default JobCards;
+
