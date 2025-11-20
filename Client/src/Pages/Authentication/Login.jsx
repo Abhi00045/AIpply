@@ -15,13 +15,10 @@ export const Login = () => {
   e.preventDefault();
 
   try {
-    const result = await axios.post('http://localhost:3011/login', {
+    const result = await axios.post("http://localhost:3011/login", {
       email,
       password,
     });
-
-      // console.log("Signup Response:", result.data);
-      // Save token + user object in localStorage
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("user", JSON.stringify(result.data.user));
       setMsg('✅ Login successful!');
@@ -36,7 +33,6 @@ export const Login = () => {
         setMsg('❌ yes Something went wrong');
       }
     }
-    console.log(error);
   }
   };
 

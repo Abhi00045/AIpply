@@ -51,6 +51,7 @@ export const userPost = async (req , res)=>{
 export const getUser = async (req , res)=>{
 
     const {email , password} = req.body;
+    console.log(email , password);
     try{
         const user = await User.findOne({email});
         //getting done
@@ -58,26 +59,35 @@ export const getUser = async (req , res)=>{
             return res.status(409).json("email not found");  //email status 
         }
         bcrypt.compare(password, user.password, function(err, result) {            
-           if(result){
-             const token = jwt.sign({
-                userId: savedUser._id,
-                userEmail : savedUser.email
-            },
-            process.env.JWT_SECRET,{expiresIn:'7d'})
+            if(err){
+                console.log(err);
+                return res.status(500).json("server error");
+            } 
+            if(!result){
+                return res.status(401).json("invalid password");
+            }
 
-        
-            res.status(201).json({
-                message: "login Successfull",
-                user: {
-                    id: savedUser._id,
-                    fullName: savedUser.fullName,
-                    email: savedUser.email,
-                    role: savedUser.role
+            const token = jwt.sign(
+                {
+                    UserID: user._id,
+                    userEmail:user.email
                 },
-                token
-            });
-           }
-           else res.status(401).send("invalid password");   //password status
+                 process.env.JWT_SECRET,
+                 { expiresIn: "7d" }
+            )
+
+
+      // Successful login
+      return res.status(200).json({
+        message: "login successful",
+        user: {
+          id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          role: user.role
+        },
+        token: token
+      });
         });
 
 
