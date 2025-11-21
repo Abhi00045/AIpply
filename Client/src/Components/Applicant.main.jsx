@@ -1,111 +1,72 @@
-// import { MdEmail } from "react-icons/md";
-// import '../Applicant/Apply.css'
-import { Profile } from '../Pages/Applicant/applicant.top';
+
+import { Profile } from '../Pages/Applicant/Profile';
 import { FindJobs } from '../Pages/Applicant/FindJobs';
 import MockInterviews from '../Pages/Applicant/MockInterviews';
-import './Applicant.css'
 import { Link, redirect } from "react-router";
 // import { useNavigate } from 'react-router-dom';
 
 // const navigate = useNavigate();
 
 
-export const JobApplicant = ()=>{
+export const JobApplicant = () => {
 
-    const handleLogout = () => {
-        // console.log("poora");
-        localStorage.removeItem("token");  // remove token
-        localStorage.removeItem("user");   // remove user details
-        redirect("/login")
-      };
-      
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    redirect("/login");
+  };
 
-    return(
-        <>
-        <div className="main">
-            <div className="main-menu-bar">
-                <div className="menu-bar">
-                <Link className="links" to='/'><h1>AIpply</h1></Link>
-                    {/* <div className="logo-with-mainpage">   
-                    <button>Find Jobs</button>
-                    </div> */}
-                    <div className="menu-lists">
-                    <ul>
-                    <Link className="links" to='/applicant/findjobs'><li>Find Jobs</li></Link>
-                        <Link className="links"  to="/applicant/MockInterviews"><li>Mock Interviews</li></Link>
-                        <Link className="links"  to='/applicant/'><li>Profile</li></Link>
-                        <Link className="links"  to='/applicant/Applications'><li>Applications</li></Link>
-                    </ul>
-                    </div>
-                <div className="logout-button">
-                <button className="logout" onClick={handleLogout}>Log out</button>
-                </div>
-                </div>
-            </div>
-            <Profile/>
-            {/* <FindJobs/> */}
-        </div>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="h-screen w-screen bg-black flex flex-row fixed">
 
-export const FindJobsForApplicant = ()=>{
+        {/* LEFT MENU BAR */}
+        <div className="w-[15%] p-3">
+          <div className="flex flex-col justify-between items-center h-full gap-12">
 
-    return(
-        <>
-        <div className="main">
-            <div className="main-menu-bar">
-                <div className="menu-bar">
-                <Link className="links" to='/'><h1>AIpply</h1></Link>
-                    {/* <div className="logo-with-mainpage">   
-                    <button>Find Jobs</button>
-                    </div> */}
-                    <div className="menu-lists">
-                    <ul>
-                    <Link className="links" to='/applicant/findjobs'><li>Find Jobs</li></Link>
-                        <Link className="links"  to="/applicant/MockInterviews"><li>Mock Interviews</li></Link>
-                        <Link className="links"  to='/applicant/'><li>Profile</li></Link>
-                        <Link className="links"  to='/applicant/Applications'><li>Applications</li></Link>
-                    </ul>
-                    </div>
-                <div className="logout-button">
-                <button className="logout">Log out</button>
-                </div>
-                </div>
+            <Link className="text-white no-underline" to="/">
+              <h1 className="text-white text-3xl font-bold">AIpply</h1>
+            </Link>
+
+            {/* MENU LIST */}
+            <div className="w-full">
+              <ul className="flex flex-col">
                 
-            </div>
-           <FindJobs/>
-        </div>
-        </>
-    )
-}
+                <Link className="no-underline text-white" to="/applicant/findjobs">
+                  <li className="list-none w-[15vw] p-4 hover:bg-[#234f92]">Find Jobs</li>
+                </Link>
 
-export const MockInterviewForApplicant = ()=>{
+                <Link className="no-underline text-white" to="/applicant/MockInterviews">
+                  <li className="list-none w-[15vw] p-4 hover:bg-[#234f92]">Mock Interviews</li>
+                </Link>
 
-    return(
-        <>
-        <div className="main">
-            <div className="main-menu-bar">
-                <div className="menu-bar">
-                <Link className="links" to='/'><h1>AIpply</h1></Link>
-                    {/* <div className="logo-with-mainpage">   
-                    <button>Find Jobs</button>
-                    </div> */}
-                    <div className="menu-lists">
-                    <ul>
-                    <Link className="links" to='/applicant/findjobs'><li>Find Jobs</li></Link>
-                        <Link className="links"  to="/applicant/MockInterviews"><li>Mock Interviews</li></Link>
-                        <Link className="links"  to='/applicant/'><li>Profile</li></Link>
-                        <Link className="links"  to='/applicant/Applications'><li>Applications</li></Link>
-                    </ul>
-                    </div>
-                <div className="logout-button">
-                <button className="logout">Log out</button>
-                </div>
-                </div>
+                <Link className="no-underline text-white" to="/applicant">
+                  <li className="list-none w-[15vw] p-4 hover:bg-[#234f92]">Profile</li>
+                </Link>
+
+                <Link className="no-underline text-white" to="/applicant/Applications">
+                  <li className="list-none w-[15vw] p-4 hover:bg-[#234f92]">Applications</li>
+                </Link>
+
+              </ul>
             </div>
-           <MockInterviews/>
+
+            {/* LOGOUT BUTTON */}
+            <div>
+              <button
+                onClick={handleLogout}
+                className="w-[13vw] py-3 rounded-[25px] cursor-pointer border-2 border-[#234f92] bg-black text-white hover:text-red-500"
+              >
+                Log out
+              </button>
+            </div>
+          </div>
         </div>
-        </>
-    )
-}
+
+        {/* CONTENT SECTION */}
+        <Profile />
+
+      </div>
+    </>
+  );
+};
