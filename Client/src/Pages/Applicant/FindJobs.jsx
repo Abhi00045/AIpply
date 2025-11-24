@@ -69,10 +69,10 @@ export const FindJobs = () => {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="flex-1 bg-white rounded-l-[25px] overflow-y-auto">
+        <div className="flex-1 rounded-l-[25px] overflow-y-auto m-5 bg-white rounded-3xl w-[85%]">
 
           {/* NAVBAR */}
-          <div className="sticky top-0 bg-white z-10 shadow-md flex justify-between items-center px-6 py-5 rounded-t-[25px]">
+          <div className="sticky top-0 bg-white z-10 shadow-md flex justify-between items-center px-6 py-5 w-full">
             <h3 className="text-black text-xl font-semibold">Jobs</h3>
             <pre className="text-black">{email}</pre>
           </div>

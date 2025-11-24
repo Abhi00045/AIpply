@@ -29,7 +29,7 @@ const JobCards = () => {
               <h2 className="text-lg font-semibold text-black">{job.role}</h2>
               <p className="text-sm text-black">{job.company}</p>
 
-              <div className="flex gap-4 mt-1 text-sm">
+              <div className="flex gap-4 mt-1 text-sm text-black">
                 <p>{job.location}</p>
                 <p className="text-blue-600 font-semibold">{job.experience}</p>
               </div>

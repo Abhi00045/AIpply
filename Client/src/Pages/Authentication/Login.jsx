@@ -40,7 +40,7 @@ export const Login = () => {
     <div className="login-container">
       <div className="login-box">
         <div className="form-section">
-          <div className="logo">AIpply</div>
+          <div className="logo">AIpplAI</div>
           <h2>Log in</h2>
           <p>
             or <a className='text-blue-500 underline' href="/signup">create an account</a> if you don’t have one yet
