@@ -18,7 +18,7 @@ export const Profile = () => {
   return (
     <>
       <div className="m-5 bg-white p-3 rounded-3xl w-[85%]">
-        <div className="sticky top-0 bg-white rounded-t-3xl shadow-md z-[1000] flex justify-between items-center h-[10vh] p-4 text-black">
+        <div className="sticky top-0 bg-white z-10 shadow-md flex justify-between items-center px-6 py-5 w-full">
           <div className="flex gap-3">
             <h3 className="text-black text-xl font-semibold">Profile</h3>
           </div>

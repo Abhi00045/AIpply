@@ -3,6 +3,9 @@ import '../Applicant/Apply.css'
 import JobCards from '../../Components/JobsPost.jsx'
 import { Link, redirect } from "react-router";
 import { useState, useEffect } from "react";
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+
 
 export const FindJobs = () => {
   const [email, setEmail] = useState("");
@@ -69,20 +72,20 @@ export const FindJobs = () => {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="flex-1 rounded-l-[25px] overflow-y-auto m-5 bg-white rounded-3xl w-[85%]">
+       <PerfectScrollbar className="flex-1 rounded-l-[25px] m-5 bg-white rounded-3xl w-[85%]">
 
-          {/* NAVBAR */}
-          <div className="sticky top-0 bg-white z-10 shadow-md flex justify-between items-center px-6 py-5 w-full">
-            <h3 className="text-black text-xl font-semibold">Jobs</h3>
-            <pre className="text-black">{email}</pre>
-          </div>
-
-          {/* CONTENT */}
-          <div className="p-6">
-            <JobCards />
-          </div>
-
+        {/* NAVBAR */}
+        <div className="sticky top-0 bg-white z-10 shadow-md flex justify-between items-center px-6 py-5 w-full">
+          <h3 className="text-black text-xl font-semibold">Jobs</h3>
+          <pre className="text-black">{email}</pre>
         </div>
+
+        {/* CONTENT */}
+        <div className="p-6">
+          <JobCards />
+        </div>
+
+      </PerfectScrollbar>
 
       </div>
     </>
