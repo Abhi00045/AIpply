@@ -10,8 +10,6 @@ export const ProfileInfo = ()=>{
 
     const [activeTab, setActiveTab] = useState('personal');
 
-
-// hiiiiiiiiiiiiiiiiiiiii
     
 
     return <>

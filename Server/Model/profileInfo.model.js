@@ -29,8 +29,8 @@ const profileInfoschema = new Schema({
     address: {type:String , required:true},
     skills : {type:[String]},
     about: {type:String },
-    workExperience: [WorkExperienceSchema],
-    education: [EducationSchema],
+    // workExperience: [WorkExperienceSchema],
+    // education: [EducationSchema],
 
 },{
     timestamps:true

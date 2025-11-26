@@ -17,6 +17,8 @@ app.use("/signup", router);
 
 app.use("/login" , getRouter);
 
+app.use("/api/profile",ProfileRouter)
+
 // app.use("/profileInfo",ProfileRouter);
 
 app.listen(3011, (req, res) => {

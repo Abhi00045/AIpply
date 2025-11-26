@@ -10,9 +10,6 @@ getRouter.post('/', getUser)
 
 router.post("/",userPost)
 
-
-
-
 export default router;
 
 
