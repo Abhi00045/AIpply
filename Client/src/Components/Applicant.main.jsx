@@ -2,18 +2,18 @@
 import { Profile } from '../Pages/Applicant/Profile';
 import { FindJobs } from '../Pages/Applicant/FindJobs';
 import MockInterviews from '../Pages/Applicant/MockInterviews';
-import { Link, redirect } from "react-router";
-// import { useNavigate } from 'react-router-dom';
+import { Link} from "react-router";
+import { useNavigate } from 'react-router-dom';
 
-// const navigate = useNavigate();
 
 
 export const JobApplicant = () => {
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    redirect("/login");
+    navigate("/login");
   };
 
   return (
