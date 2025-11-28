@@ -65,8 +65,7 @@ export const getUser = async (req , res)=>{
             } 
             if(!result){
                 return res.status(401).json("invalid password");
-            }
-
+            } //asshole
             const token = jwt.sign(
                 {
                     UserID: user._id,
