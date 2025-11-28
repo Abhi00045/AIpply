@@ -2,11 +2,25 @@ import ProfileInfo from "../Model/profileInfo.model.js";
 
 export const profilePost = async (req, res) => {
   try {
-    const { userId, fullName, email, countrycode, phonenumber, state, address, skills, about } = req.body;
+    const {
+      userId,
+      fullName,
+      email,
+      countrycode,
+      phonenumber,
+      state,
+      address,
+      skills,
+      about,
+      workExperience,
+      education
+    } = req.body;
 
-    console.log("User ID:", userId);
+    if (!userId) {
+      return res.status(400).json({ message: "User ID missing" });
+    }
 
-    const profile = await ProfileInfo.findOneAndUpdate(
+    const updatedProfile = await ProfileInfo.findOneAndUpdate(
       { userId },
       {
         fullName,
@@ -17,12 +31,15 @@ export const profilePost = async (req, res) => {
         address,
         skills,
         about,
-        userId,
+
+        // If workExperience array is sent → update it fully
+        ...(workExperience && { workExperience }),
+        ...(education && {education} )
       },
       { new: true, upsert: true }
     );
 
-    res.status(200).json(profile);
+    res.status(200).json(updatedProfile);
 
   } catch (error) {
     console.error("Profile Save Error:", error);

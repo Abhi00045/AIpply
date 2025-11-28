@@ -1,15 +1,6 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
-
-const WorkExperienceSchema = new mongoose.Schema({
-  companyName: { type: String, required: true },
-  jobRole: { type: String, required: true },
-  location: { type: String },
-  date: { type: Date },
-  description: { type: String },
-});
-
 const EducationSchema = new mongoose.Schema({
   university: { type: String, required: true },
   degree: { type: String, required: true },
@@ -17,6 +8,17 @@ const EducationSchema = new mongoose.Schema({
   startDate: { type: Date },
   endDate: { type: Date },
 });
+
+const WorkExperienceSchema = new mongoose.Schema({
+  companyName: { type: String, required: true },
+  jobRole: { type: String, required: true },
+  location: { type: String },
+  startDate: { type: Date },
+  endDate:{type: Date},
+  description: { type: String },
+});
+
+
 
 const profileInfoschema = new Schema({
 
@@ -29,8 +31,8 @@ const profileInfoschema = new Schema({
     address: {type:String , required:true},
     skills : {type:[String]},
     about: {type:String },
-    // workExperience: [WorkExperienceSchema],
-    // education: [EducationSchema],
+    workExperience: [WorkExperienceSchema],
+    education: [EducationSchema],
 
 },{
     timestamps:true
