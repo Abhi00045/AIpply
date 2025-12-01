@@ -9,7 +9,7 @@ import Education from "../ProfileSections/Education"
 export const ProfileInfo = ()=>{
 
     const [activeTab, setActiveTab] = useState('personal');
-    const [localUserID, setLocalUserID] = useState();
+    // const [localUserID, setLocalUserID] = useState();
 
     const mainLocalUser = JSON.parse(localStorage.getItem("user"));
    setLocalUserID(mainLocalUser.id);
