@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-[#111111] text-gray-300 px-8 py-6 flex justify-between items-center font-sans border-b border-gray-800/30">
+    <nav className="w-full bg-[#111111] text-gray-300 px-8 py-6 flex justify-between items-center font-sans border-b border-gray-800/30 ">
       
       {/* Left Side: Navigation Links */}
       <div className="flex gap-8 items-center text-sm font-medium tracking-wide">
