@@ -47,7 +47,7 @@ const HeroSection = () => {
           <InterviewStats />
           <HowItWorks />
         <Quote />
-        <Testimonials />
+        {/* <Testimonials /> */}
           <Contact />
       </div>
 

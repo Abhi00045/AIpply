@@ -139,33 +139,29 @@
 
 
 import React from "react";
-import "./Testimonials.css";
 
 const Testimonials = () => {
   return (
-    <section className="testimonial-section">
-      <div className="testimonial-content">
-        <h2 className="testimonial-title">Connect with us</h2>
-        <p className="testimonial-subtitle">
-          Schedule a quick call to learn how AIpply can turn your hiring process into a powerful advantage.
+    <section className="bg-[#111111] py-16 px-6 md:py-24">
+      {/* <div className="max-w-4xl mx-auto text-center border border-[#111111] rounded-3xl p-8 md:p-16 bg-[#111111] shadow-2xl"> */}
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          Connect with us
+        </h2>
+        
+        <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+          Schedule a quick call to learn how <span className="text-indigo-400 font-semibold">AIpply</span> can turn your hiring process into a powerful advantage.
         </p>
-        <a href="#contact" className="testimonial-button">
-          Learn More <span className="testimonial-arrow">↗</span>
-        </a>
-      </div>
 
-      {/* <footer className="testimonial-footer">
-        <div className="testimonial-footer-links">
-          <a href="#benefits">Benefits</a>
-          <a href="#specs">Specifications</a>
-          <a href="#howto">How-to</a>
-        </div>
-        <div className="testimonial-footer-info">
-          <div className="testimonial-logo">🤖</div>
-          <p>© RecruitAI. 2025</p>
-          <p>All Rights Reserved</p>
-        </div>
-      </footer> */}
+        <a 
+          href="#contact" 
+          className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-all duration-200 bg-indigo-600 rounded-full hover:bg-indigo-500 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] group"
+        >
+          Learn More 
+          <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1">
+            ↗
+          </span>
+        </a>
+      {/* </div> */}
     </section>
   );
 };
