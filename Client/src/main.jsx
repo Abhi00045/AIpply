@@ -11,8 +11,6 @@ import {JobApplicant } from './Components/Applicant.main.jsx'
 
 import { Signup } from './Pages/Authentication/Signup.jsx'
 import { Login } from './Pages/Authentication/Login.jsx'
-import { Recuriter } from './Pages/Recuriter/Recuriter.jsx'
-import { FindJobs } from './Pages/Applicant/FindJobs.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,11 +22,6 @@ const router = createBrowserRouter([
         element:<JobApplicant/>,
         path:'/applicant',
       },
-          {
-
-            element:<FindJobs/>,
-            path:'/applicant/findjobs'
-          },
           // // {
           // //   element:<Profile/>,
           // //   path:"/applicant/profile"
@@ -49,10 +42,6 @@ const router = createBrowserRouter([
         element:<Login/>,
         path:"/login"
       },
-      {
-        element:<Recuriter/>,
-        path:"/recuriter"
-      }
 
 ])
 

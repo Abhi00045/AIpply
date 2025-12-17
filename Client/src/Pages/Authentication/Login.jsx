@@ -33,7 +33,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="h-screen w-full bg-[#0a0a0a] flex items-center justify-center p-0 md:p-6 overflow-hidden">
+    <div className="h-screen w-full bg-[#111111] flex items-center justify-center p-0 md:p-6 overflow-hidden">
       {/* Main Container - Exact screen fit */}
       <div className="w-full h-full md:h-[90vh] max-w-6xl bg-[#111111] md:rounded-3xl overflow-hidden flex flex-row shadow-2xl border border-white/5">
         

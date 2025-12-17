@@ -1,7 +1,6 @@
 import HeroSection from "../Components/Hero.jsx";
 import HowItWorks from "../Components/Howitworks.jsx";
 import Navbar from "../Components/Navbar.jsx";
-import '../Components/HowItWorks.css';
 import { useState } from "react";
 
 const Mainpage = ()=>{

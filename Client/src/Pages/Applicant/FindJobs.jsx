@@ -1,93 +1,76 @@
-import { IoMdNotifications } from "react-icons/io";
-import '../Applicant/Apply.css'
-import JobCards from '../../Components/JobsPost.jsx'
-import { Link, redirect } from "react-router";
-import { useState, useEffect } from "react";
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import React from "react";
 
+const jobs = Array.from({ length: 9 }).map((_, index) => ({
+  id: index + 1,
+  company: "Geekster",
+  logo: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+  role: "Full Stack Developer",
+  location: "Mumbai",
+  experience: "0–1 years",
+  type: "Remote",
+  description: "Join our team to build scalable web applications using the MERN stack and modern cloud infrastructure."
+}));
 
-export const FindJobs = () => {
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    const userEmail = localStorage.getItem("user");
-    if (userEmail) {
-      const user = JSON.parse(userEmail);
-      setEmail(user.email);
-    }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    redirect("/login");
-  };
-
+const Jobs = () => {
   return (
-    <>
-      <div className="h-screen w-screen bg-black flex flex-row overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {jobs.map((job) => (
+        <div
+          key={job.id}
+          className="group relative bg-[#141415] border border-white/5 rounded-3xl p-6 flex flex-col justify-between shadow-2xl transition-all duration-300"
+        >
+          {/* Subtle Inner Glow Effect */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/5 to-transparent pointer-events-none" />
 
-        {/* LEFT SIDEBAR */}
-        <div className="w-[15%] p-5 bg-black text-white flex flex-col justify-between">
-          <div>
-            <Link to="/" className="no-underline">
-              <h1 className="text-white text-3xl font-bold">AIpply</h1>
-            </Link>
+          <div className="relative z-10">
+            {/* Top Section: Logo and Role */}
+            <div className="flex items-start justify-between mb-5">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl border border-white/10 p-2.5 flex items-center justify-center bg-zinc-800/50 shadow-inner">
+                  <img
+                    src={job.logo}
+                    alt="company logo"
+                    className="max-w-full h-auto grayscale group-hover:grayscale-0 transition-all"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-base font-bold text-white leading-tight mb-1">
+                    {job.role}
+                  </h2>
+                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+                    {job.company}
+                  </p>
+                </div>
+              </div>
+            </div>
 
-            <ul className="mt-10 flex flex-col">
-              <Link to="/applicant/findjobs" className="no-underline text-white">
-                <li className="p-4 rounded-lg hover:bg-[#234f92] cursor-pointer">
-                  Find Jobs
-                </li>
-              </Link>
+            {/* Tag Section: Styled Dark Badges */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              <span className="px-2.5 py-1 bg-indigo-500/10 text-zinc-300 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/5">
+                {job.experience}
+              </span>
+              <span className="px-2.5 py-1 bg-zinc-800/80 text-zinc-300 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/5">
+                {job.location}
+              </span>
+              <span className="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-indigo-500/20">
+                {job.type}
+              </span>
+            </div>
 
-              <Link to="/applicant/MockInterviews" className="no-underline text-white">
-                <li className="p-4 rounded-lg hover:bg-[#234f92] cursor-pointer">
-                  Mock Interviews
-                </li>
-              </Link>
-
-              <Link to="/applicant" className="no-underline text-white">
-                <li className="p-4 rounded-lg hover:bg-[#234f92] cursor-pointer">
-                  Profile
-                </li>
-              </Link>
-
-              <Link to="/applicant/Applications" className="no-underline text-white">
-                <li className="p-4 rounded-lg hover:bg-[#234f92] cursor-pointer">
-                  Applications
-                </li>
-              </Link>
-            </ul>
+            {/* Description */}
+            <span className="text-[10xp] text-zinc-400 line-clamp-2 mb-8">
+              {job.description}
+            </span>
           </div>
 
-          {/* LOGOUT */}
-          <button
-            onClick={handleLogout}
-            className="w-full py-3 rounded-[25px] border-2 border-[#234f92] bg-black text-white hover:text-red-500 transition"
-          >
-            Log out
+          {/* Action Button: Refined Outline Style */}
+          <button className="relative z-10 w-full py-3.5 bg-transparent border border-white/10 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-2xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 active:scale-[0.98]">
+            Apply Now
           </button>
         </div>
-
-        {/* MAIN CONTENT */}
-       <PerfectScrollbar className="flex-1 rounded-l-[25px] m-5 bg-white rounded-3xl w-[85%]">
-
-        {/* NAVBAR */}
-        <div className="sticky top-0 bg-white z-10 shadow-md flex justify-between items-center px-6 py-5 w-full">
-          <h3 className="text-black text-xl font-semibold">Jobs</h3>
-          <pre className="text-black">{email}</pre>
-        </div>
-
-        {/* CONTENT */}
-        <div className="p-6">
-          <JobCards />
-        </div>
-
-      </PerfectScrollbar>
-
-      </div>
-    </>
+      ))}
+    </div>
   );
 };
+
+export default Jobs;
