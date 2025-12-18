@@ -4,7 +4,7 @@ import MockInterviews from '../Pages/Applicant/MockInterviews';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; // Animation library
+import { motion, AnimatePresence } from 'framer-motion'; 
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { 
   HiOutlineUserCircle, 
@@ -14,6 +14,7 @@ import {
   HiOutlineClipboardList,
   HiOutlineLightningBolt 
 } from 'react-icons/hi';
+import { Applications } from '../Pages/Applicant/Applications';
 
 export const JobApplicant = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +45,7 @@ export const JobApplicant = () => {
     { name: 'Mock Interviews', key: 'interviews', icon: <HiOutlineTerminal /> },
     { name: 'Hackathons', key: 'hackathons', icon: <HiOutlineLightningBolt />, status: 'soon' },
     { name: 'Open Source', key: 'opensource', icon: <HiOutlineCode />, status: 'soon' },
-    { name: 'Applications', key: 'applications', icon: <HiOutlineClipboardList /> },
+    { name: 'Applications map', key: 'applications', icon: <HiOutlineClipboardList /> },
   ];
 
   const renderContent = () => {
@@ -52,8 +53,7 @@ export const JobApplicant = () => {
       case 'jobs': return <Jobs />;
       case 'interviews': return <MockInterviews />;
       case 'profile': return <Profile />;
-      case 'applications':
-        return <div className="text-gray-500 flex justify-center mt-20">Applications Section Coming Soon</div>;
+      case 'applications': return <Applications/>;
       default: return <Profile />;
     }
   };
@@ -61,6 +61,30 @@ export const JobApplicant = () => {
   return (
     <div className="h-screen w-full bg-[#0a0a0a] text-gray-300 flex overflow-hidden font-sans">
       
+      {/* GLOBAL SCROLLBAR STYLES */}
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #0a0a0a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #222;
+          border-radius: 10px;
+          border: 2px solid #0a0a0a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #333;
+        }
+        /* For Firefox */
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #222 #0a0a0a;
+        }
+      `}</style>
+
       {/* MOBILE TOGGLE */}
       <button 
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -123,8 +147,8 @@ export const JobApplicant = () => {
         </div>
       </aside>
 
-      {/* MAIN CONTENT AREA - SCROLLBAR HIDDEN */}
-      <main className="flex-1 h-screen overflow-y-auto bg-[#0a0a0a] p-4 lg:p-6">
+      {/* MAIN CONTENT AREA - CUSTOM SCROLLBAR ADDED HERE */}
+      <main className="flex-1 h-screen overflow-y-auto bg-[#0a0a0a] p-4 lg:p-6 custom-scrollbar">
         <div className="w-full min-h-full bg-[#111111] rounded-[32px] border border-white/5 shadow-2xl relative flex flex-col">
           
           {/* HEADER */}
@@ -135,7 +159,7 @@ export const JobApplicant = () => {
               animate={{ opacity: 1, x: 0 }}
               className="text-xl font-bold text-white tracking-tight uppercase"
             >
-                {activeTab === 'profile' ? name : activeTab}
+                {activeTab === 'profile' ? name : activeTab.replace('applications', 'Applications map')}
             </motion.h2>
             <div className="flex items-center gap-4">
               <span className="text-[10px] bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/20 font-bold tracking-widest">
