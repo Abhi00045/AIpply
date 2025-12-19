@@ -100,7 +100,7 @@ export const Applications = () => {
                       onChange={(e) => handleEdit(job.id, 'salary', e.target.value)}
                     />
                   </td>
-                  
+                  {/* l */}
                   <td className="border-r border-gray-800 px-4 py-3">
                     <div className="flex gap-1.5 flex-wrap">
                       {job.actions.map((act, i) => (
