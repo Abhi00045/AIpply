@@ -11,6 +11,7 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  // bruh
   status: {
     type: String,
     enum: ['Applied', 'Interviewed', 'Offer', 'Waitlisted', 'Rejected'], // Matches your React cycle
