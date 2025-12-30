@@ -4,6 +4,7 @@ import { Connection } from "./Connection/connection.js";
 import router, { getRouter } from "./Routes/user.router.js";
 import ProfileRouter from "./Routes/profileInfo.router.js";
 import cookieParser from "cookie-parser";
+import ApplicationRouter from "./Routes/Application.route.js";
 
 const app = express();
 app.use(cors({
@@ -18,6 +19,7 @@ app.use("/signup", router);
 app.use("/login" , getRouter);
 
 app.use("/api/profile",ProfileRouter)
+app.use("/api/list",ApplicationRouter)
 
 // app.use("/profileInfo",ProfileRouter);
 

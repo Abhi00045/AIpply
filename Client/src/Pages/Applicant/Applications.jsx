@@ -3,21 +3,63 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FileSpreadsheet, Trash2, Plus } from 'lucide-react';
 import { FilePlusCorner } from 'lucide-react';
 import { FileCheckCorner } from 'lucide-react';
+import axios from 'axios';
+
+
+const user = JSON.parse(localStorage.getItem('user'));
+const userEmail = user?.email;
+// console.log(userEmail);
+
 
 export const Applications = () => {
-  const [jobs, setJobs] = useState([{ 
+   const api = axios.create({
+    baseURL: 'http://localhost:3011/api/list',
+  });
+
+  // const [jobs, setJobs] = useState([]);
+   const [jobs, setJobs] = useState([{ 
     id: Date.now(), company: '', position: '', status: 'Applied', 
     date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), 
     salary: '', resume: null 
   }]);
 
+  
+// const handleAdd = async () => {
+//   console.log("added");
+  
+//   try {
+//     const res = await api.post("http://localhost:3011/api/list", {
+//       userEmail,          // ✅ send to backend
+//       company: "",
+//       position: "",
+//       status: "Applied",
+//       salary: "",
+//     });
+
+//     setJobs((prev) => [res.data, ...prev]);
+//   } catch (err) {
+//     console.error("Failed to add new role", err);
+//   }
+// };
+
+
+ 
+
   const statusCycle = ['Applied', 'Interviewed', 'Offer', 'Waitlisted', 'Rejected'];
 
-  const handleAdd = () => setJobs([{ 
-    id: Date.now(), company: '', position: '', status: 'Applied', 
+  const handleAdd = () => {
+    setJobs([{ 
+   company: '', 
+   position: '',
+    status: 'Applied', 
     date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), 
     salary: '', resume: null 
   }, ...jobs]);
+  console.log(...jobs);
+  
+  }
+
+
 
   const handleEdit = (id, field, value) => setJobs(prev => prev.map(j => j.id === id ? { ...j, [field]: value } : j));
   
@@ -48,7 +90,12 @@ export const Applications = () => {
           </tbody>
         </table>
       </div>
-      <AddButton onClick={handleAdd} />
+        <button
+    onClick={handleAdd}
+    className="mt-4 flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-white hover:bg-white/5 border border-gray-800 rounded transition-all"
+  >
+    <Plus size={14} /> New Row
+  </button>
     </div>
   );
 };
@@ -122,14 +169,7 @@ const JobRow = ({ job, onEdit, onDelete, onCycle }) => (
   </motion.tr>
 );
 
-const AddButton = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="mt-4 flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-white hover:bg-white/5 border border-gray-800 rounded transition-all"
-  >
-    <Plus size={14} /> New Row
-  </button>
-);
+
 
 const getStatusStyles = (s) => {
   const styles = {
