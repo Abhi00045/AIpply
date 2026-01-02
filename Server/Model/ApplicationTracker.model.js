@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
-import { Schema } from "mongoose";
+const { Schema } = mongoose;
 
-const ApplicationSchema = new mongoose.Schema({
-
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+const ApplicationSchema = new Schema({
+  // Link to the user who owns this application
+  userId: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: true,
+    index: true // Optimized for "find by user" queries
+  },
   company: {
     type: String,
     default: ''
@@ -12,14 +17,14 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  // bruh
   status: {
     type: String,
-    enum: ['Applied', 'Interviewed', 'Offer', 'Waitlisted', 'Rejected'], // Matches your React cycle
+    enum: ['Applied', 'Interviewed', 'Offer', 'Waitlisted', 'Rejected'],
     default: 'Applied'
   },
-  appliedDate: {
-    type: String, // Matches your frontend toLocaleDateString
+  // Renamed from appliedDate to 'date' to match your React job.date
+  date: {
+    type: String, 
     default: () => new Date().toLocaleDateString('en-US', { 
       month: 'short', 
       day: 'numeric', 
@@ -30,16 +35,19 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  resumeName: {
-    type: String, // Stores the file name
+  // Renamed from resumeName to 'resume' to match your React job.resume
+  resume: {
+    type: String,
     default: null
   },
+  // Keep this for when you implement actual file storage later
   resumeUrl: {
-    type: String, // Stores the actual path/link
+    type: String,
     default: null
   }
 }, { 
-  timestamps: true // Automatically adds createdAt and updatedAt
+  timestamps: true 
 });
 
-export default mongoose.model("ApplicationInfo",ApplicationSchema);
+// Using "ApplicationInfo" as requested
+export default mongoose.model("ApplicationInfo", ApplicationSchema);

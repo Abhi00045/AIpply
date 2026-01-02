@@ -62,7 +62,7 @@ export const JobApplicant = () => {
     <div className="h-screen w-full bg-[#0a0a0a] text-gray-300 flex overflow-hidden font-sans">
       
       {/* GLOBAL SCROLLBAR STYLES */}
-      <style jsx global>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 8px;
           height: 8px;

@@ -10,7 +10,7 @@ const userEmail = user?.email;
 export const Applications = () => {
   // Setup the API URL
   const api = axios.create({
-    baseURL: 'http://localhost:3011/api/list',
+    baseURL: 'http://localhost:3011/applicant/api/list',
   });
 
   const [jobs, setJobs] = useState([]);
@@ -22,7 +22,7 @@ export const Applications = () => {
         const res = await api.get(`/${userEmail}`);
         setJobs(res.data);
       } catch (err) {
-        console.log("Could not load data from backend");
+        console.log(err + "Could not load data from backend");
       }
     };
     if (userEmail) loadData();
@@ -56,10 +56,12 @@ export const Applications = () => {
       // 3. Add the response (which has the MongoDB _id) to our list
       // We put it at the start [new_item, ...old_items]
       setJobs((prevJobs) => [response.data, ...prevJobs]);
+      // console.log(newJobData);
+      
 
     } catch (err) {
       console.error("Backend Error: Could not add row", err);
-      alert("Failed to add row. Is your server running?");
+      // alert("Failed to add row. Is your server running?");
     }
   };
 
