@@ -1,4 +1,6 @@
 import React from "react";
+import { Search, Plus, MapPin, Briefcase, Clock, ExternalLink } from "lucide-react";
+import { useState } from "react";
 
 const jobs = Array.from({ length: 9 }).map((_, index) => ({
   id: index + 1,
@@ -12,7 +14,35 @@ const jobs = Array.from({ length: 9 }).map((_, index) => ({
 }));
 
 const Jobs = () => {
+
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [jobs, setJobs] = useState();
+
+  // // Filter logic
+  // const filteredJobs = jobs.filter(
+  //   (job) =>
+  //     job.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //     job.company.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
   return (
+    <>
+    <div className="max-w-7xl mx-auto mb-10 flex flex-row md:flex-row gap-4 justify-between items-center">
+        <div className="relative w-full md:w-96 group">
+          <Search className="absolute left-90 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-indigo-400 transition-colors" size={18} />
+          <input
+            type="text"
+            placeholder="Search role or company..."
+            // value={searchTerm}
+            // onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full bg-[#141415] border border-white/5 rounded-2xl py-3 pl-12 pr-4 text-sm outline-none focus:border-indigo-500/50 transition-all placeholder:text-zinc-600"
+          />
+        </div>
+
+        <button className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-bold text-sm transition-all active:scale-95 shadow-lg shadow-indigo-500/20">
+          <Plus size={18} />
+          New Application
+        </button>
+      </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {jobs.map((job) => (
         <div
@@ -70,6 +100,7 @@ const Jobs = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 
