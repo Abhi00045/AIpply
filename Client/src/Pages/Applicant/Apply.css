@@ -214,4 +214,36 @@
   /* /////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
   /////////////////////////////// */
+.inputChanger {
+  /* Remove all default styling */
+  background: transparent;
+  border: none;
+  outline: none;
   
+  /* Add the minimalist bottom line */
+  border-bottom: 1px solid rgba(156, 163, 175, 0.3); /* Subtle gray-800/40 equivalent */
+  
+  /* Spacing and text alignment */
+  padding: 11px;
+  color: #f3f4f6; /* slate-200 / white */
+  font-size: 0.875rem; /* text-sm */
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+/* Placeholder styling */
+.inputChanger::placeholder {
+  color: #4b5563; /* gray-700 */
+}
+
+/* Focus state: The line glows blue when you click to edit */
+.inputChanger:focus {
+  border-bottom: 1px solid rgba(59, 130, 246, 0.6); /* blue-500/60 */
+}
+
+/* Remove number arrows for salary input */
+.inputChanger[type="number"]::-webkit-inner-spin-button,
+.inputChanger[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
