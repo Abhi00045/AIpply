@@ -106,7 +106,7 @@ export const JobApplicant = () => {
           </Link>
 
           <nav className="mt-4">
-            <h3 className="text-gray-500 uppercase text-[10px] font-bold tracking-[0.2em] mb-6 px-4">Menu</h3>
+            {/* <h3 className="text-gray-500 uppercase text-[10px] font-bold tracking-[0.2em] mb-6 px-4">Menu</h3> */}
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <motion.li 
