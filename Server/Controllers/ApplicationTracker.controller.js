@@ -1,5 +1,5 @@
-import User from "../models/User.js";
-import ApplicationInfo from "../models/ApplicationInfo.js";
+import User from "../Model/user.model.js"
+import ApplicationInfo from '../Model/ApplicationTracker.model.js'
 
 export const addNewRole = async (req, res) => {
   try {

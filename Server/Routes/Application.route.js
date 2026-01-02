@@ -1,11 +1,11 @@
 import express from "express";
-import { addNewRole } from "../controllers/application.controller.js";
-import protect from "../middleware/auth.middleware.js";
+import { addNewRole } from "../controllers/ApplicationTracker.controller.js";
+// import protect from "../middleware/auth.middleware.js";
 
 const ApplicationRouter = express.Router();
 
-router.use(protect);
+// router.use(protect);
 
-router.post("/", addNewRole);
+ApplicationRouter.post("/", addNewRole);
 
 export default ApplicationRouter;
