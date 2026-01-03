@@ -5,6 +5,7 @@ import { Connection } from "./Connection/connection.js";
 import router, { getRouter } from "./Routes/user.router.js";
 import ProfileRouter from "./Routes/profileInfo.router.js";
 import ApplicationRouter from "./Routes/Application.route.js";
+import JobRouter from "./Routes/Jobposting.router.js";
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,8 @@ app.use("/applicant/api/profile", ProfileRouter);
 
 // MISSING LINK FIXED: Connects your Job Tracker to the backend
 app.use("/applicant/api/list", ApplicationRouter);
+
+app.use("/applicant/api/jobs",JobRouter);
 
 // --- SERVER START ---
 app.listen(3011, () => {
