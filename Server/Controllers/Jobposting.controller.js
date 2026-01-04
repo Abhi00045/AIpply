@@ -6,7 +6,6 @@ export const addNewJob = async  (req, res)=>{
             role: "",
             company: "",
             companyEmail: "",
-
             location: "",
             experience: "",
             type: "Remote",
