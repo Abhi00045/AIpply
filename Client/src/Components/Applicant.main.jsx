@@ -45,7 +45,7 @@ export const JobApplicant = () => {
     { name: 'Mock Interviews', key: 'interviews', icon: <HiOutlineTerminal /> },
     { name: 'Hackathons', key: 'hackathons', icon: <HiOutlineLightningBolt />, status: 'soon' },
     { name: 'Open Source', key: 'opensource', icon: <HiOutlineCode />, status: 'soon' },
-    { name: 'Applications map', key: 'applications', icon: <HiOutlineClipboardList /> },
+    { name: 'Application Tracker', key: 'applications', icon: <HiOutlineClipboardList /> },
   ];
 
   const renderContent = () => {
