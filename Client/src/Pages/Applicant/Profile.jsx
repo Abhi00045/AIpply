@@ -29,13 +29,13 @@ export const Profile = () => {
         <div className="col-span-12 lg:col-span-6 space-y-6">
           <div className="grid grid-cols-2 gap-4">
             {/* Orders */}
-            <StatCard title="Orders" value="201" trend="+8.2%" icon={<IoMdCart />} isUp={true} />
+            <StatCard title="Jobs" value="201" trend="+8.2%" icon={<IoMdCart />} isUp={true} />
             {/* Approved */}
-            <StatCard title="Approved" value="36" trend="+3.4%" icon={<IoMdCheckmarkCircle />} isUp={true} />
+            <StatCard title="Applications" value="36" trend="+3.4%" icon={<IoMdCheckmarkCircle />} isUp={true} />
             {/* Month Total */}
-            <StatCard title="Month total" value="25410" trend="-0.2%" isUp={false} />
+            <StatCard title="Mock Interviews" value="25410" trend="-0.2%" isUp={false} />
             {/* Revenue */}
-            <StatCard title="Revenue" value="1352" trend="-1.2%" isUp={false} />
+            <StatCard title="Scores" value="1352" trend="-1.2%" isUp={false} />
           </div>
 
           {/* Sales Dynamics Chart Placeholder */}
