@@ -17,7 +17,7 @@ const Jobs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false); // New Loading State
-  const api = axios.create({baseURL: 'http://localhost:3011/applicant/api/jobs'});
+  // const api = axios.create({baseURL: 'http://localhost:3011/applicant/api/jobs'});
 
   const [JobPostingData, setJobPostingData] = useState({
     role: "",
@@ -32,33 +32,66 @@ const Jobs = () => {
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setJobPostingData({ ...JobPostingData, [name]: value });
-  };
+  const { name, value } = e.target;
 
-  const handleSubmit = async(e) => {
+  setJobPostingData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
+// const handleSubmit = async(e) => {
+  //   e.preventDefault();
+  //   setIsModalOpen(false); // Close modal immediately
+  //   setIsLoading(true);    // Start Loader
+
+  //     const JobPostingData = {
+  //   role: "",
+  //   company: "",
+  //   companyEmail: "",
+  //   location: "",
+  //   experience: "",
+  //   type: "Remote",
+  //   skills: "",
+  //   description: "",
+  //   logo: ""
+  // };
+
+  //   // console.log("Posting to MongoDB:", formData);
+
+  //   try{
+  //     const res = await  api.post("http://localhost:3011/applicant/api/jobs", JobPostingData);
+  //     setJobPostingData(prev => [res.data, ...prev]);
+  //     console.log(JobPostingData);
+  //     console.log(res.data);
+      
+      
+  //   }catch(err) {
+  //     console.error("posted failed", err)
+  //   }
+
+  //   // Simulate 3000ms delay as requested
+  //   setTimeout(() => {
+  //     setIsLoading(false); // Hide Loader after 3 seconds
+  //   }, 9000);
+  // };
+
+  const handleSubmit = async (e) =>{
     e.preventDefault();
-    setIsModalOpen(false); // Close modal immediately
-    setIsLoading(true);    // Start Loader
-
-    // console.log("Posting to MongoDB:", formData);
-
+        setIsModalOpen(false); // Close modal immediately
+        setIsLoading(true);    // Start Loader
     try{
-      const res = await  api.post("/", JobPostingData);
-      setJobPostingData(prev => [res.data, ...prev]);
+      const result = await axios.post("http://localhost:3011/applicant/jobs",JobPostingData);
       console.log(JobPostingData);
-      console.log(res.data);
-      
-      
-    }catch(err) {
-      console.error("posted failed", err)
+      alert("added successfully")
+      console.log(result); 
+    }catch(err){
+      console.log("Post failed", err); 
     }
-
-    // Simulate 3000ms delay as requested
     setTimeout(() => {
       setIsLoading(false); // Hide Loader after 3 seconds
-    }, 9000);
-  };
+    }, 3000);
+  }
 
   return (
     <>
@@ -120,6 +153,9 @@ const Jobs = () => {
         </div>
       )}
 
+
+
+
       {/* POPUP MODAL (Remains unchanged except for form submission) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
@@ -133,56 +169,113 @@ const Jobs = () => {
 
             <h2 className="text-2xl font-bold text-white mb-6">Create Job Posting</h2>
             
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Role</label>
-                <input name="role" required onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500" placeholder="e.g. Full Stack Developer" />
-              </div>
-              
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Company Name</label>
-                <input name="company" required onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500" placeholder="e.g. Geekster" />
-              </div>
+           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div className="flex flex-col gap-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Role</label>
+    <input
+      name="role"
+      required
+      onChange={handleInputChange}
+      value={JobPostingData.role}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+      placeholder="e.g. Full Stack Developer"
+    />
+  </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Company Email</label>
-                <input name="companyEmail" type="email" onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500" placeholder="hr@company.com" />
-              </div>
+  <div className="flex flex-col gap-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Company Name</label>
+    <input
+      name="company"
+      required
+      onChange={handleInputChange}
+      value={JobPostingData.company}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+      placeholder="e.g. Geekster"
+    />
+  </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Location</label>
-                <input name="location" required onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500" placeholder="e.g. Mumbai" />
-              </div>
+  <div className="flex flex-col gap-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Company Email</label>
+    <input
+      name="companyEmail"
+      type="email"
+      onChange={handleInputChange}
+      value={JobPostingData.companyEmail}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+      placeholder="hr@company.com"
+    />
+  </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Experience</label>
-                <input name="experience" onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500" placeholder="e.g. 0-1 years" />
-              </div>
+  <div className="flex flex-col gap-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Location</label>
+    <input
+      name="location"
+      required
+      onChange={handleInputChange}
+      value={JobPostingData.location}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+      placeholder="e.g. Mumbai"
+    />
+  </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Type</label>
-                <select name="type" onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500">
-                  <option value="Remote">Remote</option>
-                  <option value="On-site">On-site</option>
-                  <option value="Hybrid">Hybrid</option>
-                </select>
-              </div>
+  <div className="flex flex-col gap-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Experience</label>
+    <input
+      name="experience"
+      onChange={handleInputChange}
+      value={JobPostingData.experience}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+      placeholder="e.g. 0-1 years"
+    />
+  </div>
 
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Skills (Comma separated)</label>
-                <input name="skills" onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500" placeholder="React, Node, MongoDB" />
-              </div>
+  <div className="flex flex-col gap-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Type</label>
+    <select
+      name="type"
+      onChange={handleInputChange}
+      value={JobPostingData.type}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+    >
+      <option value="Remote">Remote</option>
+      <option value="On-site">On-site</option>
+      <option value="Hybrid">Hybrid</option>
+    </select>
+  </div>
 
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Description</label>
-                <textarea name="description" rows={3} onChange={handleInputChange} className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500 resize-none" placeholder="Job details..." />
-              </div>
+  <div className="flex flex-col gap-2 md:col-span-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">
+      Skills (Comma separated)
+    </label>
+    <input
+      name="skills"
+      onChange={handleInputChange}
+      value={JobPostingData.skills}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500"
+      placeholder="React, Node, MongoDB"
+    />
+  </div>
 
-              <button type="submit" className="md:col-span-2 mt-4 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-all shadow-lg shadow-indigo-500/20">
-                save
-              </button>
-            </form>
-          </div>
+  <div className="flex flex-col gap-2 md:col-span-2">
+    <label className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest">Description</label>
+    <textarea
+      name="description"
+      rows={3}
+      onChange={handleInputChange}
+      value={JobPostingData.description}
+      className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-indigo-500 resize-none"
+      placeholder="Job details..."
+    />
+  </div>
+
+  <button
+    type="submit"
+    className="md:col-span-2 mt-4 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-all shadow-lg shadow-indigo-500/20"
+  >
+    Save
+  </button>
+</form>
+ </div>
         </div>
       )}
     </>

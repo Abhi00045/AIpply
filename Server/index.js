@@ -27,7 +27,7 @@ app.use("/applicant/api/profile", ProfileRouter);
 // MISSING LINK FIXED: Connects your Job Tracker to the backend
 app.use("/applicant/api/list", ApplicationRouter);
 
-app.use("/applicant/api/jobs",JobRouter);
+app.use("/applicant/jobs",JobRouter);
 
 // --- SERVER START ---
 app.listen(3011, () => {
