@@ -22,3 +22,26 @@ export const addNewJob = async (req, res) => {
     });
   }
 };
+
+export const getJobs = async (req, res) => {
+  try {
+
+    const jobs = await JobPosting.find();
+
+    if(!jobs || jobs.length === 0){
+        return res.status(200).json({
+        success: true,
+        data: [],
+        message: "No jobs found",
+      });
+    }
+
+    res.status(200).json(jobs);
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch jobs",
+      error: err.message,
+    });
+  }
+};

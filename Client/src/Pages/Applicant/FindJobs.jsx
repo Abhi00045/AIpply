@@ -1,23 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search, Plus, MapPin, Briefcase, Clock, ExternalLink, X, Loader2 } from "lucide-react";
 import axios from "axios";
 
-const jobsData = Array.from({ length: 9 }).map((_, index) => ({
-  id: index + 1,
-  company: "Geekster",
-  logo: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
-  role: "Full Stack Developer",
-  location: "Mumbai",
-  experience: "0–1 years",
-  type: "Remote",
-  description: "Join our team to build scalable web applications using the MERN stack and modern cloud infrastructure."
-}));
+
+
 
 const Jobs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false); // New Loading State
   // const api = axios.create({baseURL: 'http://localhost:3011/applicant/api/jobs'});
+
+   const [jobsData, setjobsData] = useState([]); 
+   useEffect(()=>{
+
+    const fetchJobs = async()=>{
+      try{
+        const res = await axios.get("http://localhost:3011/applicant/jobs");
+        setjobsData(Array.isArray(res.data) ? res.data : []);
+      }catch(err){
+        console.log("fetch failed", err); 
+      }
+    }
+    fetchJobs();
+
+   },[])
 
   const [JobPostingData, setJobPostingData] = useState({
     role: "",
@@ -40,58 +47,42 @@ const Jobs = () => {
   }));
 };
 
-// const handleSubmit = async(e) => {
-  //   e.preventDefault();
-  //   setIsModalOpen(false); // Close modal immediately
-  //   setIsLoading(true);    // Start Loader
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsModalOpen(false);
+  setIsLoading(true);
 
-  //     const JobPostingData = {
-  //   role: "",
-  //   company: "",
-  //   companyEmail: "",
-  //   location: "",
-  //   experience: "",
-  //   type: "Remote",
-  //   skills: "",
-  //   description: "",
-  //   logo: ""
-  // };
+  try {
+    const res = await axios.post(
+      "http://localhost:3011/applicant/jobs",
+      JobPostingData
+    );
 
-  //   // console.log("Posting to MongoDB:", formData);
+    // ✅ INSTANT UI UPDATE
+    setjobsData((prev) => [res.data, ...prev]);
 
-  //   try{
-  //     const res = await  api.post("http://localhost:3011/applicant/api/jobs", JobPostingData);
-  //     setJobPostingData(prev => [res.data, ...prev]);
-  //     console.log(JobPostingData);
-  //     console.log(res.data);
-      
-      
-  //   }catch(err) {
-  //     console.error("posted failed", err)
-  //   }
+    // reset form
+    setJobPostingData({
+      role: "",
+      company: "",
+      companyEmail: "",
+      location: "",
+      experience: "",
+      type: "Remote",
+      skills: "",
+      description: "",
+      logo: "",
+    });
 
-  //   // Simulate 3000ms delay as requested
-  //   setTimeout(() => {
-  //     setIsLoading(false); // Hide Loader after 3 seconds
-  //   }, 9000);
-  // };
-
-  const handleSubmit = async (e) =>{
-    e.preventDefault();
-        setIsModalOpen(false); // Close modal immediately
-        setIsLoading(true);    // Start Loader
-    try{
-      const result = await axios.post("http://localhost:3011/applicant/jobs",JobPostingData);
-      console.log(JobPostingData);
-      alert("added successfully")
-      console.log(result); 
-    }catch(err){
-      console.log("Post failed", err); 
-    }
+  } catch (err) {
+    console.error("Post failed", err);
+  } finally {
     setTimeout(() => {
       setIsLoading(false); // Hide Loader after 3 seconds
     }, 3000);
   }
+};
+
 
   return (
     <>
@@ -123,7 +114,16 @@ const Jobs = () => {
           <Loader2 size={40} className="animate-spin text-green-400" />
           <p className="text-zinc-500 font-medium animate-pulse tracking-widest text-xs uppercase">adding...</p>
         </div>
-      ) : (
+      ) 
+      : jobsData.length === 0 ? (
+  <div className="flex flex-row items-center justify-center min-h-[400px] gap-3 text-center">
+    <Briefcase size={40} className="text-zinc-600" />
+    <span className="text-zinc-700 text-2xl">
+      {/* Be the first one to add a job posting */}
+      Empty. Post something.
+    </span>
+  </div>
+) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
           {jobsData.map((job) => (
             <div key={job.id} className="group relative bg-[#141415] border border-white/5 rounded-3xl p-6 flex flex-col justify-between shadow-2xl transition-all duration-300">
