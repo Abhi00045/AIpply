@@ -11,6 +11,7 @@ import {JobApplicant } from './Components/Applicant.main.jsx'
 
 import { Signup } from './Pages/Authentication/Signup.jsx'
 import { Login } from './Pages/Authentication/Login.jsx'
+import VideoCallDashboard from './Components/Agent/videoCallBoard.jsx'
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         element:<JobApplicant/>,
         path:'/applicant',
+      },
+      {
+      element:<VideoCallDashboard/>,
+      path:'/mock'
       },
           // // {
           // //   element:<Profile/>,
