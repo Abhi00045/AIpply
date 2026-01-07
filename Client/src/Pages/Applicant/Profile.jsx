@@ -107,7 +107,6 @@ export const Profile = () => {
             </table>
           </div>
         </div>
-
       </div>
 </>
   );

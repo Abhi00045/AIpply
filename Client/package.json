@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.5",
     "@tailwindcss/vite": "^4.1.17",
+    "@vapi-ai/web": "^2.5.2",
+    "ai": "^6.0.14",
     "axios": "^1.10.0",
     "clerk": "^0.6.1",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "firebase": "^11.9.1",
     "framer-motion": "^12.23.26",
     "lodash": "^4.17.21",
