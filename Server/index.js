@@ -6,6 +6,9 @@ import router, { getRouter } from "./Routes/user.router.js";
 import ProfileRouter from "./Routes/profileInfo.router.js";
 import ApplicationRouter from "./Routes/Application.route.js";
 import JobRouter from "./Routes/Jobposting.router.js";
+import dns from "node:dns/promises";
+
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 dotenv.config();
 const app = express();
