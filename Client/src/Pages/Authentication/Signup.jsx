@@ -23,7 +23,7 @@ export const Signup = () => {
 
     try {
       setIsLoading(true);
-      const result = await axios.post("http://localhost:3011/signup", {
+      const result = await axios.post("http://localhost:3010/api/auth/register", {
         fullname: name,
         email,
         password,
