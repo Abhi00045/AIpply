@@ -1,11 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-// import router from "./Routes/user.route.js";
-import router from "./Routes/user.route";
-// import ProfileRouter from "./Routes/profileInfo.router.js";
-// import ApplicationRouter from "./Routes/Application.route.js";
-// import JobRouter from "./Routes/Jobposting.router.js";
+
+import router from "./Routes/user.route.js";
 import dns from "node:dns/promises";
 
 dns.setServers(["1.1.1.1", "8.8.8.8"]);

@@ -11,7 +11,7 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://localhost:5000/api/auth/login", {
+      const result = await axios.post("http://localhost:3011/api/users/login", {
         email,
         password,
       });
