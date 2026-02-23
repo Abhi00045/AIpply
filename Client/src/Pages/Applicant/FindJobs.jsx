@@ -16,7 +16,7 @@ const Jobs = () => {
 
     const fetchJobs = async()=>{
       try{
-        const res = await axios.get("http://localhost:3011/applicant/jobs");
+        const res = await axios.get("http://localhost:3011/api/jobs");
         setjobsData(Array.isArray(res.data) ? res.data : []);
       }catch(err){
         console.log("fetch failed", err); 
@@ -54,7 +54,7 @@ const Jobs = () => {
 
   try {
     const res = await axios.post(
-      "http://localhost:3011/applicant/jobs",
+      "http://localhost:3011/api/jobs",
       JobPostingData
     );
 

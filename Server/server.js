@@ -3,6 +3,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import router from "./Routes/user.route.js";
+
+import JobRouter from "./Routes/jobPosting.route.js";
+
 import dns from "node:dns/promises";
 
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
@@ -24,6 +27,7 @@ app.use(express.json());
 /* ================= ROUTES ================= */
 
 app.use("/api/users", router); 
+app.use("/api/jobs", JobRouter);
 // → /api/users/signup
 // → /api/users/login
 
