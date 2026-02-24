@@ -8,6 +8,7 @@ export const addNewRole = async (req, res) => {
     const { data, error } = await supabase
       .from("application_info")
       .insert({
+        user_id: crypto.randomUUID(), // temp fake user
         company,
         position,
         salary,
@@ -23,8 +24,7 @@ export const addNewRole = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "Failed to add application",
-      error: error.message,
+      message: error.message
     });
   }
 };
