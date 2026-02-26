@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import React, { useState, useEffect, useCallback, useMemo } from "react";
+import {AnimatePresence } from "framer-motion";
 import {
   FileSpreadsheet,
   Trash2,
@@ -10,15 +11,33 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import _ from "lodash";
+import { supabase } from "../lib/supabase"; // ✅ make sure this exists
 import "./Apply.css";
 
 export const Applications = () => {
   const [jobs, setJobs] = useState([]);
   const [savingRows, setSavingRows] = useState(new Set());
 
-  const api = axios.create({
-    baseURL: "http://localhost:3011/api/applications",
-  });
+  // ✅ Axios instance with auth interceptor
+  const api = useMemo(() => {
+    const instance = axios.create({
+      baseURL: "http://localhost:3011/api/applications",
+    });
+
+    instance.interceptors.request.use(async (config) => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session?.access_token) {
+        config.headers.Authorization = `Bearer ${session.access_token}`;
+      }
+
+      return config;
+    });
+
+    return instance;
+  }, []);
 
   const statusCycle = [
     "Applied",
@@ -34,22 +53,25 @@ export const Applications = () => {
         const res = await api.get("/");
         setJobs(res.data.data);
       } catch (err) {
-        console.error(err);
+        console.error("LOAD ERROR:", err.response?.data || err.message);
       }
     };
     loadData();
-  }, []);
+  }, [api]);
 
   const saveToBackend = useCallback(
     _.debounce(async (id, field, value) => {
       try {
         await api.put(`/${id}`, { [field]: value });
+
         setSavingRows((p) => {
           const n = new Set(p);
           n.delete(id);
           return n;
         });
-      } catch {
+      } catch (err) {
+        console.error("UPDATE ERROR:", err.response?.data || err.message);
+
         setSavingRows((p) => {
           const n = new Set(p);
           n.delete(id);
@@ -57,14 +79,16 @@ export const Applications = () => {
         });
       }
     }, 800),
-    []
+    [api]
   );
 
   const handleEdit = (id, field, value) => {
     setSavingRows((p) => new Set(p).add(id));
+
     setJobs((p) =>
       p.map((j) => (j.id === id ? { ...j, [field]: value } : j))
     );
+
     saveToBackend(id, field, value);
   };
 
@@ -77,18 +101,20 @@ export const Applications = () => {
         salary: "",
         resume: null,
       });
+
       setJobs((p) => [res.data.data, ...p]);
     } catch (err) {
-      console.error(err);
+      console.error("ADD ERROR:", err.response?.data || err.message);
     }
   };
 
   const handleDelete = async (id) => {
     setJobs((p) => p.filter((j) => j.id !== id));
+
     try {
       await api.delete(`/${id}`);
     } catch (err) {
-      console.error(err);
+      console.error("DELETE ERROR:", err.response?.data || err.message);
     }
   };
 
@@ -171,7 +197,7 @@ export const Applications = () => {
                   </td>
 
                   <td className="px-4 py-3 text-center text-xs text-gray-500">
-                    {job.date}
+                    {job.created_at?.split("T")[0]}
                   </td>
 
                   <td className="px-4 py-3 text-center">

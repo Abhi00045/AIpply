@@ -1,53 +1,85 @@
-import supabase from "../lib/db.js"
+import supabase from "../lib/db.js";
 
 // 1️⃣ ADD APPLICATION
 export const addNewRole = async (req, res) => {
   try {
     const { company, position, salary, status } = req.body;
 
+    // 🔥 Get logged-in user
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return res.status(401).json({
+        success: false,
+        message: "User not authenticated",
+      });
+    }
+
     const { data, error } = await supabase
       .from("application_info")
       .insert({
-        user_id: crypto.randomUUID(), // temp fake user
+        user_id: user.id, // ✅ real user id
         company,
         position,
         salary,
-        status
+        status,
       })
       .select()
       .single();
 
     if (error) throw error;
 
-    res.status(201).json({ success: true, data });
+    res.status(201).json({
+      success: true,
+      data,
+    });
 
   } catch (error) {
+    console.error("ADD ERROR:", error.message);
     res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     });
   }
 };
 
 
-// 2️⃣ GET ALL APPLICATIONS (auto filtered by RLS)
+// 2️⃣ GET ALL APPLICATIONS
 export const getApplications = async (req, res) => {
   try {
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return res.status(401).json({
+        success: false,
+        message: "User not authenticated",
+      });
+    }
 
     const { data, error } = await supabase
       .from("application_info")
       .select("*")
+      .eq("user_id", user.id) // ✅ only fetch user's records
       .order("created_at", { ascending: false });
 
     if (error) throw error;
 
-    res.status(200).json({ success: true, data });
+    res.status(200).json({
+      success: true,
+      data,
+    });
 
   } catch (error) {
+    console.error("FETCH ERROR:", error.message);
     res.status(500).json({
       success: false,
-      message: "Error fetching data",
-      error: error.message
+      message: error.message,
     });
   }
 };
@@ -67,13 +99,16 @@ export const updateApplication = async (req, res) => {
 
     if (error) throw error;
 
-    res.status(200).json({ success: true, data });
+    res.status(200).json({
+      success: true,
+      data,
+    });
 
   } catch (error) {
+    console.error("UPDATE ERROR:", error.message);
     res.status(500).json({
       success: false,
-      message: "Update failed",
-      error: error.message
+      message: error.message,
     });
   }
 };
@@ -93,14 +128,14 @@ export const deleteApplication = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Application deleted"
+      message: "Application deleted",
     });
 
   } catch (error) {
+    console.error("DELETE ERROR:", error.message);
     res.status(500).json({
       success: false,
-      message: "Delete failed",
-      error: error.message
+      message: error.message,
     });
   }
 };
