@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import {AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FileSpreadsheet,
   Trash2,
@@ -119,7 +119,8 @@ export const Applications = () => {
   };
 
   return (
-    <div className="p-4 bg-[#111] min-h-screen text-gray-300 min-w-[1000px]">
+    <>
+    {/* <div className="p-4 bg-[#111] min-h-screen text-gray-300 min-w-[1000px]"> */}
       <div className="overflow-x-auto rounded-xl border border-gray-800">
         <table className="w-full text-left border-collapse min-w-[1000px]">
           <thead>
@@ -253,7 +254,9 @@ export const Applications = () => {
       >
         <Plus size={18} /> New Application
       </button>
-    </div>
+   {/* </div> */}
+
+    </>
   );
 };
 

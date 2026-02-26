@@ -1,160 +1,113 @@
-import { useState, useEffect } from "react";
-import { 
-  IoMdNotifications, 
-  IoMdWallet, 
-  IoMdCart, 
-  IoMdCheckmarkCircle, 
-  IoMdTrendingUp, 
-  IoMdTrendingDown 
-} from "react-icons/io";
+import { ResponsiveContainer, BarChart, Bar, XAxis, Tooltip } from "recharts";
+
+const data = [
+  { name: "Mon", value: 82 },
+  { name: "Tue", value: 51 },
+  { name: "Wed", value: 88 },
+  { name: "Thu", value: 45 },
+  { name: "Fri", value: 82 },
+];
 
 export const Profile = () => {
-  const [email, setEmail] = useState("");
+  return (
+    <div className="space-y-6">
 
-  useEffect(() => {
-    const userEmail = localStorage.getItem("user");
-    if (userEmail) {
-      const user = JSON.parse(userEmail);
-      setEmail(user.email);
-    }
-  }, []);
+      {/* Top Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard title="Total Projects" value="15" change="+5 vs last month" />
+        <StatCard title="Total Tasks" value="10" change="+2 vs last month" />
+        <StatCard title="In Reviews" value="23" change="+12 vs last month" />
+        <StatCard title="Completed Tasks" value="50" change="+15 vs last month" />
+      </div>
 
-  return (<>
-    
-      {/* Top Header Section */}
+      {/* Middle Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      <div className="grid grid-cols-12 gap-6">
-        
-        {/* Left Column: Stats Cards & Sales Dynamics */}
-        <div className="col-span-12 lg:col-span-6 space-y-6">
-          <div className="grid grid-cols-2 gap-4">
-            {/* Orders */}
-            <StatCard title="Jobs" value="201" trend="+8.2%" icon={<IoMdCart />} isUp={true} />
-            {/* Approved */}
-            <StatCard title="Applications" value="36" trend="+3.4%" icon={<IoMdCheckmarkCircle />} isUp={true} />
-            {/* Month Total */}
-            <StatCard title="Mock Interviews" value="25410" trend="-0.2%" isUp={false} />
-            {/* Revenue */}
-            <StatCard title="Scores" value="1352" trend="-1.2%" isUp={false} />
-          </div>
-
-          {/* Sales Dynamics Chart Placeholder */}
-          <div className="bg-[#1a1d27] p-6 rounded-2xl h-80">
-            <div className="flex justify-between mb-4">
-              <h3 className="text-lg font-semibold">Sales dynamics</h3>
-              <span className="text-gray-400">2021 ▾</span>
-            </div>
-            <div className="flex items-end justify-between h-56 px-2">
-              {/* Simplified Bar Visualization */}
-              {[60, 40, 80, 50, 70, 90, 65, 30, 75, 55, 85, 95].map((h, i) => (
-                <div key={i} className="w-4 bg-gray-700 rounded-t-full relative group">
-                  <div className="absolute bottom-0 w-full bg-blue-500 rounded-t-full transition-all duration-500" style={{ height: `${h}%` }}></div>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-between mt-2 text-[10px] text-gray-500 uppercase">
-              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+        {/* Today's Tasks */}
+        <div className="lg:col-span-2 bg-[#111] rounded-2xl p-6 border border-white/5">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold text-white">Today's Tasks</h3>
+            <div className="flex gap-2">
+              <input
+                placeholder="Search here..."
+                className="bg-[#1a1a1a] text-xs px-3 py-2 rounded-lg outline-none border border-white/10"
+              />
+              <button className="bg-[#1a1a1a] text-xs px-4 py-2 rounded-lg border border-white/10">
+                Filter
+              </button>
             </div>
           </div>
+
+          <TaskRow name="Prepare Q2 report" project="Fintech Project" date="12 Mar 2024" />
+          <TaskRow name="Finalize homepage design" project="Brodo Redesign" date="12 Mar 2024" />
+          <TaskRow name="Review onboarding checklist" project="HR Setup" date="12 Mar 2024" />
+          <TaskRow name="Finalize homepage design" project="Lucas Projects" date="12 Mar 2024" />
         </div>
 
-        {/* Right Column: Donut Charts & Invoices */}
-        <div className="col-span-12 lg:col-span-6 space-y-6">
-          <div className="grid grid-cols-2 gap-4">
-            {/* Users Donut */}
-            <DonutCard title="Users" value="4.890" legend={[{label: 'New', color: 'bg-yellow-500'}, {label: 'Returning', color: 'bg-yellow-200'}, {label: 'Inactive', color: 'bg-gray-600'}]} />
-            {/* Subscriptions Donut */}
-            <DonutCard title="Subscriptions" value="1.201" legend={[{label: 'Paid', color: 'bg-blue-500'}, {label: 'Trial', color: 'bg-blue-300'}]} />
+        {/* Performance */}
+        <div className="bg-[#111] rounded-2xl p-6 border border-white/5">
+          <h3 className="text-lg font-semibold text-white mb-4">Performance</h3>
+
+          <div className="text-3xl font-bold text-white mb-6">
+            86% <span className="text-xs text-green-400 ml-2">+15% vs last week</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {/* Paid Invoices */}
-            <div className="bg-[#1a1d27] p-5 rounded-2xl relative overflow-hidden">
-               <div className="flex justify-between">
-                <IoMdWallet className="text-gray-400" size={24} />
-                <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full flex items-center justify-center text-[10px]">+15%</div>
-               </div>
-               <p className="text-gray-400 mt-4 text-sm">Paid Invoices</p>
-               <p className="text-xl font-bold">$30,256.23</p>
-               <p className="text-[10px] text-gray-500">Current Financial Year</p>
-            </div>
-            {/* Funds Received */}
-            <div className="bg-[#1a1d27] p-5 rounded-2xl relative overflow-hidden">
-               <div className="flex justify-between">
-                <div className="p-1 bg-gray-800 rounded">💼</div>
-                <div className="w-10 h-10 border-4 border-green-500 border-t-transparent rounded-full flex items-center justify-center text-[10px]">+59%</div>
-               </div>
-               <p className="text-gray-400 mt-4 text-sm">Funds received</p>
-               <p className="text-xl font-bold">$150,256.23</p>
-               <p className="text-[10px] text-gray-500">Current Financial Year</p>
-            </div>
-          </div>
-
-          {/* Customer Order Table */}
-          <div className="bg-[#1a1d27] p-4 rounded-2xl overflow-x-auto">
-            <h3 className="mb-4 font-semibold">Customer order</h3>
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="text-gray-500 border-b border-gray-800">
-                  <th className="pb-2">Profile</th><th className="pb-2">Address</th><th className="pb-2">Date</th><th className="pb-2">Status</th><th className="pb-2 text-right">Price</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-800">
-                <TableRow name="Press" addr="London" date="22.08.2022" status="Delivered" price="$920" color="bg-yellow-900/30" />
-                <TableRow name="Marina" addr="Man city" date="24.08.2022" status="Processed" price="$452" color="bg-green-900/30" />
-                <TableRow name="Alex" addr="Unknown" date="18.08.2022" status="Cancelled" price="$1200" color="bg-red-900/30" />
-              </tbody>
-            </table>
-          </div>
+          <ResponsiveContainer width="100%" height={180}>
+            <BarChart data={data}>
+              <XAxis dataKey="name" stroke="#888" />
+              <Tooltip />
+              <Bar dataKey="value" radius={[6, 6, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
-</>
+
+      {/* Bottom Projects Table */}
+      <div className="bg-[#111] rounded-2xl p-6 border border-white/5">
+        <div className="flex justify-between mb-4">
+          <h3 className="text-lg font-semibold text-white">List Projects</h3>
+          <input
+            placeholder="Search here..."
+            className="bg-[#1a1a1a] text-xs px-3 py-2 rounded-lg outline-none border border-white/10"
+          />
+        </div>
+
+        <ProjectRow name="Fintech Project" status="In Progress" progress="70%" tasks="14 / 20" date="12 Mar 2024" owner="Michael M" />
+        <ProjectRow name="Brodo Redesign" status="Completed" progress="100%" tasks="25 / 25" date="16 Mar 2024" owner="Jhon Cena" />
+        <ProjectRow name="HR Setup" status="On Hold" progress="70%" tasks="8 / 20" date="18 May 2024" owner="Dawne Jay" />
+      </div>
+    </div>
   );
 };
 
-// Sub-components for cleaner code
-const StatCard = ({ title, value, trend, isUp, icon }) => (
-  <div className="bg-[#1a1d27] p-5 rounded-2xl flex flex-col justify-between">
-    <div className="flex justify-between text-gray-400">
-      <span className="text-sm">{title}</span>
-      {icon || <div className="w-5 h-5 border border-gray-600 rounded" />}
-    </div>
-    <div className="mt-4">
-      <h2 className="text-2xl font-bold">{value}</h2>
-      <div className={`flex items-center text-xs mt-1 ${isUp ? 'text-green-400' : 'text-red-400'}`}>
-        {isUp ? <IoMdTrendingUp className="mr-1"/> : <IoMdTrendingDown className="mr-1"/>}
-        {trend} <span className="text-gray-500 ml-1">since last month</span>
-      </div>
-    </div>
+/* ---------------- COMPONENTS ---------------- */
+
+const StatCard = ({ title, value, change }) => (
+  <div className="bg-[#111] rounded-2xl p-6 border border-white/5">
+    <p className="text-gray-400 text-sm">{title}</p>
+    <h2 className="text-3xl font-bold text-white mt-2">{value}</h2>
+    <p className="text-xs text-green-400 mt-1">{change}</p>
   </div>
 );
 
-const DonutCard = ({ title, value, legend }) => (
-  <div className="bg-[#1a1d27] p-5 rounded-2xl flex items-center justify-between">
+const TaskRow = ({ name, project, date }) => (
+  <div className="grid grid-cols-3 text-sm py-3 border-b border-white/5 last:border-none text-gray-300">
+    <div>{name}</div>
+    <div className="text-gray-400">{project}</div>
+    <div className="text-right text-gray-500">{date}</div>
+  </div>
+);
+
+const ProjectRow = ({ name, status, progress, tasks, date, owner }) => (
+  <div className="grid grid-cols-6 text-sm py-4 border-b border-white/5 last:border-none text-gray-300 items-center">
+    <div className="col-span-2">{name}</div>
     <div>
-      <h3 className="text-gray-400 text-sm">{title}</h3>
-      <h2 className="text-2xl font-bold mb-4">{value}</h2>
-      <div className="space-y-1">
-        {legend.map((item, i) => (
-          <div key={i} className="flex items-center text-[10px] text-gray-400">
-            <span className={`w-2 h-2 rounded-full mr-2 ${item.color}`}></span>
-            {item.label}
-          </div>
-        ))}
-      </div>
+      <span className="px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-400">
+        {status}
+      </span>
     </div>
-    <div className="w-20 h-20 rounded-full border-8 border-blue-500 border-l-gray-700 transform rotate-45"></div>
+    <div>{progress}</div>
+    <div>{tasks}</div>
+    <div className="text-right text-gray-500">{date}</div>
   </div>
-);
-
-const TableRow = ({ name, addr, date, status, price, color }) => (
-  <tr className={`${color} border-l-4 border-transparent hover:border-blue-500`}>
-    <td className="py-3 px-2 flex items-center gap-2">
-      <div className="w-6 h-6 rounded-full bg-gray-600"></div> {name}
-    </td>
-    <td>{addr}</td>
-    <td>{date}</td>
-    <td>{status}</td>
-    <td className="text-right font-bold">{price}</td>
-  </tr>
 );

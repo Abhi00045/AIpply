@@ -1,27 +1,40 @@
 import supabase from "../lib/db.js";
 
+// Helper to get authenticated user
+const getAuthenticatedUser = async (req) => {
+  const token = req.headers.authorization?.split(" ")[1];
+
+  if (!token) return null;
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser(token);
+
+  if (error || !user) return null;
+
+  return user;
+};
+
+
 // 1️⃣ ADD APPLICATION
 export const addNewRole = async (req, res) => {
   try {
-    const { company, position, salary, status } = req.body;
+    const user = await getAuthenticatedUser(req);
 
-    // 🔥 Get logged-in user
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-
-    if (authError || !user) {
+    if (!user) {
       return res.status(401).json({
         success: false,
         message: "User not authenticated",
       });
     }
 
+    const { company, position, salary, status } = req.body;
+
     const { data, error } = await supabase
       .from("application_info")
       .insert({
-        user_id: user.id, // ✅ real user id
+        user_id: user.id,
         company,
         position,
         salary,
@@ -50,12 +63,9 @@ export const addNewRole = async (req, res) => {
 // 2️⃣ GET ALL APPLICATIONS
 export const getApplications = async (req, res) => {
   try {
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
+    const user = await getAuthenticatedUser(req);
 
-    if (authError || !user) {
+    if (!user) {
       return res.status(401).json({
         success: false,
         message: "User not authenticated",
@@ -65,7 +75,7 @@ export const getApplications = async (req, res) => {
     const { data, error } = await supabase
       .from("application_info")
       .select("*")
-      .eq("user_id", user.id) // ✅ only fetch user's records
+      .eq("user_id", user.id)
       .order("created_at", { ascending: false });
 
     if (error) throw error;
@@ -88,12 +98,22 @@ export const getApplications = async (req, res) => {
 // 3️⃣ UPDATE APPLICATION
 export const updateApplication = async (req, res) => {
   try {
+    const user = await getAuthenticatedUser(req);
+
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "User not authenticated",
+      });
+    }
+
     const { id } = req.params;
 
     const { data, error } = await supabase
       .from("application_info")
       .update(req.body)
       .eq("id", id)
+      .eq("user_id", user.id)
       .select()
       .single();
 
@@ -117,12 +137,22 @@ export const updateApplication = async (req, res) => {
 // 4️⃣ DELETE APPLICATION
 export const deleteApplication = async (req, res) => {
   try {
+    const user = await getAuthenticatedUser(req);
+
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "User not authenticated",
+      });
+    }
+
     const { id } = req.params;
 
     const { error } = await supabase
       .from("application_info")
       .delete()
-      .eq("id", id);
+      .eq("id", id)
+      .eq("user_id", user.id);
 
     if (error) throw error;
 

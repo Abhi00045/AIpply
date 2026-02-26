@@ -1,9 +1,19 @@
 import { createClient } from '@supabase/supabase-js'
 import 'dotenv/config'
 
-const supabaseUrl = process.env.SUPABASE_URL
-const supabaseKey = process.env.SUPABASE_ANON_KEY // use service role in backend
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  {
+    global: {
+      headers: {
+        Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+      },
+    },
+    auth: {
+      persistSession: false,
+    },
+  }
+)
 
-const supabase = createClient(supabaseUrl, supabaseKey)
-
-export default supabase;
+export default supabase
